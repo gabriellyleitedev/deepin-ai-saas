@@ -97,7 +97,7 @@ const Hero = () => {
                     {/* Brilho extra atrás do globo */}
                     <div className="absolute w-[400px] h-[400px] bg-indigo-500/20 blur-[80px] rounded-full"></div>
 
-                    <div className="w-full max-w-full lg:pl-10">
+                    <div className="w-full lg:pl-10">
                         <Globe />
                     </div>
 

@@ -1,21 +1,26 @@
-import { Feature } from "framer-motion";
 import Header from "./pages/Header";
 import Hero from "./pages/Hero";
 import Features from "./pages/Features";
 import Stats from "./pages/Stats";
-
+import ProductShowcase from "./components/ProductShowcase";
+import Testimonials from "./pages/Testimonials";
+import Pricing from "./pages/Pricing";
 
 function App() {
   return (
-    <div className="App bg-[#07080f] min-h-screen text-white">
+
+    <div className="App bg-[#000000] min-h-screen text-white selection:bg-purple-500/30">
       <Header />
-      <main className="pt-24 px-4 sm:px-6 lg:px-8">
+      <main className="relative">
         <Hero />
         <Features />
         <Stats />
+        <ProductShowcase />
+        <Testimonials />
+        <Pricing />
       </main>
     </div>
-  )
+  );
 }
 
 export default App;

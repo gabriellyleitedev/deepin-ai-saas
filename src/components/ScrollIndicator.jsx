@@ -12,7 +12,7 @@ const ScrollIndicator = () => {
         >
             <div className="relative w-16 h-16 flex items-center justify-center">
 
-                {/* Anel de Rastro (Gira rápido e expande no hover) */}
+                {/* Anel de Rastro */}
                 <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
@@ -30,7 +30,6 @@ const ScrollIndicator = () => {
                     className="absolute w-8 h-8 bg-purple-600/20 rounded-full blur-xl"
                 />
 
-                {/*  A Seta com "Kick" */}
                 <motion.div
                     animate={{ y: [0, 8, 0] }}
                     transition={{
@@ -48,7 +47,6 @@ const ScrollIndicator = () => {
                 </motion.div>
             </div>
 
-            {/* Texto sutil que aparece no hover */}
             <motion.span
                 className="text-[10px] uppercase tracking-[0.3em] text-slate-500 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0"
             >

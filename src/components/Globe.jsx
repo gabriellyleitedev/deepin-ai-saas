@@ -19,8 +19,7 @@ export default function Globe() {
         let animationFrameId;
 
         const drawGlobe = () => {
-
-            // Limpa o canvas para o próximo frame (Garante a transparência)
+            // Limpa o canvas
             ctx.clearRect(0, 0, size, size);
 
             // Brilho interno do globo
@@ -41,10 +40,10 @@ export default function Globe() {
             ctx.fillStyle = gradient;
             ctx.fill();
 
-            ctx.strokeStyle = "rgba(167, 139, 250, 0.5)";
+            ctx.strokeStyle = "rgba(167, 139, 250, 0.15)";
             ctx.lineWidth = 1.5;
 
-            // Desenha as linhas verticais (Longitudes)
+            // Longitudes
             for (let i = 0; i < 12; i++) {
                 const angle = ((i * 30 + rotation) * Math.PI) / 180;
                 const visible = Math.cos(angle);
@@ -63,7 +62,7 @@ export default function Globe() {
                 }
             }
 
-            // Desenha as linhas horizontais (Latitudes)
+            // Latitudes
             for (let lat = -60; lat <= 60; lat += 30) {
                 const y = (Math.sin((lat * Math.PI) / 180) * radius);
                 const currentRadius = Math.cos((lat * Math.PI) / 180) * radius;
@@ -74,7 +73,7 @@ export default function Globe() {
                 ctx.stroke();
             }
 
-            // Desenha os pontos luminosos
+            // Pontos luminosos
             ctx.globalAlpha = 1;
             for (let lat = -75; lat <= 75; lat += 20) {
                 for (let lng = 0; lng < 360; lng += 20) {
@@ -105,15 +104,20 @@ export default function Globe() {
                 }
             }
 
-            // Borda externa
+            // BORDA EXTERNA 
+            const edgeGradient = ctx.createRadialGradient(centerX, centerY, radius - 1, centerX, centerY, radius + 2);
+            edgeGradient.addColorStop(0, "rgba(139, 92, 246, 0.83)");
+            edgeGradient.addColorStop(0.6, "rgba(139, 92, 246, 0.3)");
+            edgeGradient.addColorStop(1, "rgba(139, 92, 246, 0)");
+
             ctx.beginPath();
             ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-            ctx.strokeStyle = "rgba(133, 97, 241, 0.83)";
-            ctx.lineWidth = 2;
-            ctx.globalAlpha = 1;
+            ctx.strokeStyle = edgeGradient;
+            ctx.lineWidth = 3;
+            ctx.globalAlpha = 0.8;
             ctx.stroke();
 
-            rotation += 0.3; // Velocidade da rotação
+            rotation += 0.3;
             animationFrameId = requestAnimationFrame(drawGlobe);
         };
 
@@ -128,9 +132,12 @@ export default function Globe() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="relative flex items-center justify-center"
+            style={{
+                maskImage: 'radial-gradient(circle, black 60%, transparent 95%)',
+                WebkitMaskImage: 'radial-gradient(circle, black 60%, transparent 95%)'
+            }}
         >
-            {/* Esse é o brilho de fundo */}
-            <div className="absolute inset-0 bg-purple-500/10 rounded-full blur-[100px] scale-75"></div>
+            <div className="absolute inset-0 bg-purple-500/20 opacity-50 rounded-full blur-[80px] scale-70"></div>
 
             <canvas
                 ref={canvasRef}

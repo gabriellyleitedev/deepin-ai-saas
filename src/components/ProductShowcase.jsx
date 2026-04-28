@@ -1,0 +1,108 @@
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { useRef } from "react";
+import dashboardImg from "../assets/dashboard-mockup.png";
+
+const ProductShowcase = () => {
+  const targetRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start end", "end start"],
+  });
+
+  // ANIMAÇÕES DE ENTRADA (3D)
+  const rotateX = useTransform(scrollYProgress, [0, 0.35], [35, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.35], [0.8, 1]);
+  const translateZ = useTransform(scrollYProgress, [0, 0.35], [-300, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.25], [0, 1]);
+
+  return (
+    <section
+      ref={targetRef}
+      className="relative py-32 flex flex-col items-center justify-center bg-transparent"
+      style={{ perspective: "1500px" }}
+    >
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-center mb-16 px-6 relative z-20"
+      >
+        <h2 className="text-4xl lg:text-6xl font-bold tracking-tighter mb-4">
+          The Operating System for <br />
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-500">
+            Next-Gen SaaS
+          </span>
+        </h2>
+        <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+          Deepin AI automates your complex workflows, turning data into strategic advantages.
+          The intelligence your business stack was missing.
+        </p>
+      </motion.div>
+
+      {/* LUZES DE FUNDO */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+
+        {/* Núcleo Roxo */}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full"
+          style={{
+            background: "radial-gradient(circle, rgba(168, 85, 247, 0.45) 0%, transparent 70%)",
+            filter: "blur(80px)",
+          }}
+        />
+        {/* Brilho Azulado */}
+        <div
+          className="absolute top-[40%] right-[10%] w-[600px] h-[600px] rounded-full opacity-30"
+          style={{
+            background: "radial-gradient(circle, rgba(45, 212, 191, 0.2) 0%, transparent 70%)",
+            filter: "blur(100px)",
+          }}
+        />
+      </div>
+
+      {/* O DASHBOARD */}
+      <motion.div
+        style={{ rotateX, scale, opacity, z: translateZ, transformStyle: "preserve-3d" }}
+        className="relative z-10 max-w-5xl w-full px-6"
+      >
+        {/* Glow de Borda */}
+        <div className="absolute -inset-[1px] bg-gradient-to-tr from-purple-500/80 via-transparent to-cyan-500/80 rounded-2xl blur-md opacity-60" />
+
+        <div className="relative rounded-2xl border border-white/10 bg-[#050505] shadow-[0_0_100px_rgba(0,0,0,1)] overflow-hidden">
+
+          {/* Header do Browser */}
+          <div className="flex items-center justify-between px-6 py-4 bg-white/5 border-b border-white/10">
+            <div className="flex gap-2">
+              <div className="w-2.5 h-2.5 rounded-full bg-purple-500" />
+              <div className="w-2.5 h-2.5 rounded-full bg-cyan-500" />
+              <div className="w-2.5 h-2.5 rounded-full bg-cyan-500" />
+            </div>
+
+            <div className="w-12" />
+          </div>
+
+          <div className="relative">
+            <img
+              src={dashboardImg}
+              alt="Dashboard"
+              className="w-full h-auto block brightness-[1.05]"
+            />
+            {/* Efeito de Sweep (Brilho passando) */}
+            <motion.div
+              animate={{ x: ["-100%", "250%"] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", repeatDelay: 2 }}
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.05] to-transparent w-1/2 -skew-x-12"
+            />
+          </div>
+        </div>
+
+        {/* Reflexo no Chão */}
+        <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[110%] h-[200px] bg-purple-600/20 blur-[100px] rounded-[100%] -z-10 opacity-50" />
+      </motion.div>
+    </section>
+  );
+};
+
+export default ProductShowcase;

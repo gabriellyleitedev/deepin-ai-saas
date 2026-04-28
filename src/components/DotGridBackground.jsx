@@ -12,7 +12,7 @@ export default function DotGridBackground() {
     }, []);
 
     return (
-        <div className="absolute -top-24 inset-x-0 bottom-0 z-[1] bg-[#050508] pointer-events-none">
+        <div className="fixed -top-3 inset-x-0 bottom-0 bg-black pointer-events-none ">
 
             {/* 1. LAYER FIXA (Pontinhos sutis visíveis no fundo) */}
             <div
@@ -40,7 +40,7 @@ export default function DotGridBackground() {
             <div
                 className="absolute inset-0"
                 style={{
-                    background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(139, 92, 246, 0.07), transparent 70%)`
+                    background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(139, 92, 246, 0.1), transparent 70%)`
                 }}
             />
 
