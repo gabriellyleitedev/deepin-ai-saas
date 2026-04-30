@@ -5,11 +5,12 @@ import Stats from "./pages/Stats";
 import ProductShowcase from "./components/ProductShowcase";
 import Testimonials from "./pages/Testimonials";
 import Pricing from "./pages/Pricing";
+import Footer from "./pages/Footer";
 
 function App() {
   return (
 
-    <div className="App bg-[#000000] min-h-screen text-white selection:bg-purple-500/30">
+    <div className="bg-[#000000] min-h-screen text-white selection:bg-purple-500/30">
       <Header />
       <main className="relative">
         <Hero />
@@ -18,6 +19,7 @@ function App() {
         <ProductShowcase />
         <Testimonials />
         <Pricing />
+        <Footer />
       </main>
     </div>
   );

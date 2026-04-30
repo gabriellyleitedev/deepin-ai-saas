@@ -65,7 +65,7 @@ const ProductShowcase = () => {
       {/* O DASHBOARD */}
       <motion.div
         style={{ rotateX, scale, opacity, z: translateZ, transformStyle: "preserve-3d" }}
-        className="relative z-10 max-w-5xl w-full px-6"
+        className="relative z-10 md:max-w-7xl w-full px-2"
       >
         {/* Glow de Borda */}
         <div className="absolute -inset-[1px] bg-gradient-to-tr from-purple-500/80 via-transparent to-cyan-500/80 rounded-2xl blur-md opacity-60" />

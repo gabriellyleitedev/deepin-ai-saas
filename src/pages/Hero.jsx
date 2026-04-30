@@ -9,8 +9,8 @@ const containerVariants = {
     visible: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.2, // Tempo entre o surgimento de cada item (0.2s)
-            delayChildren: 0.3    // Espera um pouco antes de começar
+            staggerChildren: 0.2,
+            delayChildren: 0.3
         }
     }
 };
@@ -27,11 +27,11 @@ const itemVariants = {
 
 const Hero = () => {
     return (
-        <section className="relative min-h-screen flex items-center overflow-hidden pt-20 pb-32">
+        <section className="relative min-h-screen flex items-center overflow-hidden pt-36 pb-32">
             <DotGridBackground />
 
-            {/* Efeito de Brilho no Fundo (Ambient Light) */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-600/10 blur-[120px] rounded-full z-0"></div>
+            {/* Efeito de Brilho no Fundo  */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-purple-600/10 blur-[120px] rounded-full z-0"></div>
 
             <div className="max-w-full mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
 
@@ -49,7 +49,7 @@ const Hero = () => {
 
                     <motion.h1 variants={itemVariants} className="text-5xl lg:text-7xl font-bold leading-tight">
                         Welcome to <br />
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-500">
+                        <span className="bg-clip-text text-transparent bg-linear-to-r from-purple-400 to-indigo-500">
                             DEEPIN AI
                         </span>
                     </motion.h1>
@@ -76,7 +76,7 @@ const Hero = () => {
                                 boxShadow: "0_0_15px_rgba(168,85,247,0.1)"
                             }}
                             whileTap={{ scale: 0.95 }}
-                            className="px-8 py-4 bg-white/10 text-white border border-white/20 rounded-xl font-bold transition-colors cursor-pointer cursor-pointer duration-300 "
+                            className="px-8 py-4 bg-white/10 text-white border border-white/20 rounded-xl font-bold transition-colors cursor-pointer duration-300 "
                         >
                             View Documentation
                         </motion.button>
@@ -89,14 +89,13 @@ const Hero = () => {
                     animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                     transition={{
                         duration: 1.2,
-                        delay: 0.6, // Entra depois que o texto começou
+                        delay: 0.6,
                         ease: "easeOut"
                     }}
                     className="flex justify-center items-center relative"
                 >
-                    {/* Brilho extra atrás do globo */}
-                    <div className="absolute w-[400px] h-[400px] bg-indigo-500/20 blur-[80px] rounded-full"></div>
 
+                    <div className="absolute w-100 h-100 bg-indigo-500/20 blur-[80px] rounded-full"></div>
                     <div className="w-full lg:pl-10">
                         <Globe />
                     </div>

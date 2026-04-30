@@ -32,13 +32,13 @@ const Pricing = () => {
     <section className="relative py-32 bg-transparent overflow-hidden">
       {/* --- TEXTO GIGANTE NO FUNDO (ESTILO REFERÊNCIA) --- */}
       <div className="absolute top-20 left-1/2 -translate-x-1/2 select-none pointer-events-none">
-        <h2 className="text-[12rem] lg:text-[20rem] font-black text-white/[0.03] leading-none uppercase">
+        <h2 className="text-[12rem] lg:text-[20rem] font-black text-white/20 leading-none uppercase">
           Pricing
         </h2>
       </div>
 
       {/* --- LUZ DE FUNDO --- */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-purple-600/10 blur-[120px] -z-10" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-100 bg-purple-600/10 blur-[120px] -z-10" />
 
       <div className="container mx-auto px-6 relative z-10">
         
@@ -71,8 +71,8 @@ const Pricing = () => {
               viewport={{ once: true }}
               className={`relative flex flex-col p-8 rounded-3xl border transition-all duration-500 ${
                 plan.highlight 
-                ? 'bg-white/[0.06] border-purple-500/50 shadow-[0_0_50px_rgba(168,85,247,0.15)] scale-105 z-20' 
-                : 'bg-white/[0.02] border-white/10 hover:border-white/20 z-10'
+                ? 'bg-white/6 border-purple-500/50 shadow-[0_0_50px_rgba(168,85,247,0.15)] scale-105 z-20' 
+                : 'bg-white/2 border-white/10 hover:border-white/20 z-10'
               } backdrop-blur-xl`}
             >
               {plan.highlight && (
