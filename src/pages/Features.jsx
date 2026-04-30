@@ -71,10 +71,12 @@ const Features = () => {
                                 {/* Card Content */}
                                 <div className="relative h-full bg-white/[0.02] backdrop-blur-xl rounded-2xl border border-white/10 p-8 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.04]">
 
+                                    {/* Icon Container */}
                                     <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/10 mb-6 group-hover:from-purple-500/30 group-hover:to-pink-500/20 transition-all duration-300">
                                         <IconComponent className="w-7 h-7 text-purple-300" />
                                     </div>
 
+                                    {/* Text Content */}
                                     <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 leading-tight">
                                         {feature.title}
                                     </h3>
@@ -83,7 +85,7 @@ const Features = () => {
                                     </p>
 
                                     {/* Hover Accent */}
-                                    <div className="absolute bottom-0 left-1.5 w-0 h-1 bg-gradient-to-r from-purple-500 to-pink-500 group-hover:w-12 transition-all duration-300 rounded-full" />
+                                    <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-purple-500 to-pink-500 group-hover:w-12 transition-all duration-300 rounded-full" />
                                 </div>
                             </motion.div>
                         );

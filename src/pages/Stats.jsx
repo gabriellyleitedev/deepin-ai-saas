@@ -41,7 +41,7 @@ const Stats = () => {
         <section className="relative py-24 overflow-hidden">
             {/* Background Ambient Light - Mais sutil */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-600/5 blur-[120px] rounded-full" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-purple-600/5 blur-[120px] rounded-full" />
             </div>
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -75,11 +75,11 @@ const Stats = () => {
                                 className="group relative"
                             >
                                 {/* Glow de Hover - Agora ele só aparece no hover e é suave */}
-                                <div className="absolute inset-0 bg-purple-500/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-[2rem]" />
+                                <div className="absolute inset-0 bg-purple-500/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-4xl" />
 
-                                <div className="relative h-full rounded-[2rem] border border-white/5 bg-white/[0.02] backdrop-blur-md p-8 transition-all duration-500 group-hover:border-white/10 group-hover:bg-white/[0.04]">
+                                <div className="relative h-full rounded-4xl border border-white/5 bg-white/2 backdrop-blur-md p-8 transition-all duration-500 group-hover:border-white/10 group-hover:bg-white/4">
                                     <div className="text-center">
-                                        <h3 className="text-4xl md:text-5xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white via-purple-200 to-indigo-400">
+                                        <h3 className="text-4xl md:text-5xl font-black tracking-tighter text-transparent bg-clip-text bg-linear-to-br from-white via-purple-200 to-indigo-400">
                                             {formatCount(count, stat)}
                                         </h3>
                                         <p className="mt-3 text-xs font-bold uppercase tracking-[0.2em] text-slate-500 group-hover:text-purple-400 transition-colors">

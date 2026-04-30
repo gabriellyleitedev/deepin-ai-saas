@@ -23,7 +23,7 @@ function Header() {
             animate="visible"
             variants={animationVariants}
             transition={{ duration: 0.8 }}
-            className="fixed inset-x-0 top-0 z-50 flex justify-center px-3 py-4">
+            className="fixed inset-x-0 top-0 z-50 flex justify-center px-7 py-4">
 
             {/* EFEITO DE LUZ (GLOW) ATRÁS DO HEADER */}
             <motion.div

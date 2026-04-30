@@ -31,7 +31,7 @@ const ProductShowcase = () => {
       >
         <h2 className="text-4xl lg:text-6xl font-bold tracking-tighter mb-4">
           The Operating System for <br />
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-500">
+          <span className="bg-clip-text text-transparent bg-linear-to-r from-purple-400 to-indigo-500">
             Next-Gen SaaS
           </span>
         </h2>
@@ -46,7 +46,7 @@ const ProductShowcase = () => {
 
         {/* Núcleo Roxo */}
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 h-125 rounded-full"
           style={{
             background: "radial-gradient(circle, rgba(168, 85, 247, 0.45) 0%, transparent 70%)",
             filter: "blur(80px)",
@@ -54,7 +54,7 @@ const ProductShowcase = () => {
         />
         {/* Brilho Azulado */}
         <div
-          className="absolute top-[40%] right-[10%] w-[600px] h-[600px] rounded-full opacity-30"
+          className="absolute top-[40%] right-[10%] w-150 h-150 rounded-full opacity-30"
           style={{
             background: "radial-gradient(circle, rgba(45, 212, 191, 0.2) 0%, transparent 70%)",
             filter: "blur(100px)",
@@ -68,7 +68,7 @@ const ProductShowcase = () => {
         className="relative z-10 md:max-w-7xl w-full px-2"
       >
         {/* Glow de Borda */}
-        <div className="absolute -inset-[1px] bg-gradient-to-tr from-purple-500/80 via-transparent to-cyan-500/80 rounded-2xl blur-md opacity-60" />
+        <div className="absolute -inset-px bg-linear-to-tr from-purple-500 via-transparent to-cyan-500 rounded-2xl blur-md opacity-100" />
 
         <div className="relative rounded-2xl border border-white/10 bg-[#050505] shadow-[0_0_100px_rgba(0,0,0,1)] overflow-hidden">
 
@@ -76,8 +76,8 @@ const ProductShowcase = () => {
           <div className="flex items-center justify-between px-6 py-4 bg-white/5 border-b border-white/10">
             <div className="flex gap-2">
               <div className="w-2.5 h-2.5 rounded-full bg-purple-500" />
-              <div className="w-2.5 h-2.5 rounded-full bg-cyan-500" />
-              <div className="w-2.5 h-2.5 rounded-full bg-cyan-500" />
+              <div className="w-2.5 h-2.5 rounded-full bg-purple-500" />
+              <div className="w-2.5 h-2.5 rounded-full bg-purple-500" />
             </div>
 
             <div className="w-12" />
@@ -93,13 +93,13 @@ const ProductShowcase = () => {
             <motion.div
               animate={{ x: ["-100%", "250%"] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", repeatDelay: 2 }}
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.05] to-transparent w-1/2 -skew-x-12"
+              className="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent w-1/2 -skew-x-12"
             />
           </div>
         </div>
 
         {/* Reflexo no Chão */}
-        <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[110%] h-[200px] bg-purple-600/20 blur-[100px] rounded-[100%] -z-10 opacity-50" />
+        <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[110%] h-50 bg-purple-600/20 blur-[100px] rounded-[100%] -z-10 opacity-50" />
       </motion.div>
     </section>
   );

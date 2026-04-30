@@ -12,7 +12,7 @@ function App() {
 
     <div className="bg-[#000000] min-h-screen text-white selection:bg-purple-500/30">
       <Header />
-      <main className="relative">
+      <main className="relative w-full overflow-x-hidden">
         <Hero />
         <Features />
         <Stats />
