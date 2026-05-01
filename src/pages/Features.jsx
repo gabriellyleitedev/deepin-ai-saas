@@ -21,7 +21,7 @@ const Features = () => {
 
             {/* Radial Gradient Glow Background */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-purple-500/10 via-transparent to-transparent rounded-full blur-3xl" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-200 bg-gradient-radial from-purple-500/10 via-transparent to-transparent rounded-full blur-3xl" />
             </div>
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -66,13 +66,13 @@ const Features = () => {
                                 className={`group relative ${colSpan} ${rowSpan} md:${colSpan} lg:${colSpan}`}
                             >
                                 {/* Gradient Border Effect */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                <div className="absolute inset-0 bg-linear-to-br from-white/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                                 {/* Card Content */}
-                                <div className="relative h-full bg-white/[0.02] backdrop-blur-xl rounded-2xl border border-white/10 p-8 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.04]">
+                                <div className="relative h-full bg-white/2 backdrop-blur-xl rounded-2xl border border-white/10 p-8 transition-all duration-300 hover:border-white/20 hover:bg-white/4">
 
                                     {/* Icon Container */}
-                                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/10 mb-6 group-hover:from-purple-500/30 group-hover:to-pink-500/20 transition-all duration-300">
+                                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-linear-to-br from-purple-500/20 to-pink-500/10 mb-6 group-hover:from-purple-500/30 group-hover:to-pink-500/20 transition-all duration-300">
                                         <IconComponent className="w-7 h-7 text-purple-300" />
                                     </div>
 
@@ -85,7 +85,7 @@ const Features = () => {
                                     </p>
 
                                     {/* Hover Accent */}
-                                    <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-purple-500 to-pink-500 group-hover:w-12 transition-all duration-300 rounded-full" />
+                                    <div className="absolute bottom-0 left-0 w-0 h-1 bg-linear-to-r from-purple-500 to-pink-500 group-hover:w-12 transition-all duration-300 rounded-full" />
                                 </div>
                             </motion.div>
                         );

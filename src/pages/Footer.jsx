@@ -22,10 +22,10 @@ function Footer() {
       className="relative pt-32 pb-10 bg-[#030303] overflow-hidden w-full"
     >
 
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-purple-500/30 to-transparent" />
 
       <div className="absolute -bottom-4 lg:-bottom-20 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none z-0">
-        <h2 className="text-[26vw] lg:text-[18rem] font-black text-white/[0.06] tracking-tighter leading-none select-none">
+        <h2 className="text-[26vw] lg:text-[18rem] font-black text-white/6 tracking-tighter leading-none select-none">
           DEEPIN
         </h2>
       </div>

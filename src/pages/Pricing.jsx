@@ -70,13 +70,13 @@ const Pricing = () => {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className={`relative flex flex-col w-full max-w-md md:max-w-none p-8 rounded-[2.5rem] border cursor-pointer transition-all duration-500 overflow-hidden ${isFocused
                   ? 'bg-white/[0.07] border-purple-500/50 shadow-[0_0_80px_rgba(168,85,247,0.15)] md:scale-105 z-30'
-                  : 'bg-white/[0.02] border-white/10 opacity-80 md:scale-95 z-10 hover:border-white/30'
+                  : 'bg-white/2 border-white/10 opacity-80 md:scale-95 z-10 hover:border-white/30'
                   } backdrop-blur-md`}
               >
 
                 {/* Efeito de brilho */}
                 {isFocused && (
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent" />
+                  <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-purple-500 to-transparent" />
                 )}
 
                 {plan.highlight && (
@@ -98,7 +98,7 @@ const Pricing = () => {
                 <ul className="flex-1 space-y-5 mb-10">
                   {plan.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-3 text-sm text-slate-300/90 leading-tight">
-                      <div className={`mt-1 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center ${isFocused ? 'bg-purple-500/20' : 'bg-white/5'}`}>
+                      <div className={`mt-1 shrink-0 w-4 h-4 rounded-full flex items-center justify-center ${isFocused ? 'bg-purple-500/20' : 'bg-white/5'}`}>
                         <svg className={`w-2.5 h-2.5 ${isFocused ? 'text-purple-400' : 'text-white/20'}`} fill="currentColor" viewBox="0 0 20 20">
                           <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
                         </svg>
