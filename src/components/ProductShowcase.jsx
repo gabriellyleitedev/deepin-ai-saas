@@ -19,7 +19,7 @@ const ProductShowcase = () => {
   return (
     <section
       ref={targetRef}
-      className="relative py-20 flex flex-col items-center justify-center bg-transparent"
+      className="relative py-32 flex flex-col items-center justify-center bg-transparent"
       style={{ perspective: "1500px" }}
     >
 

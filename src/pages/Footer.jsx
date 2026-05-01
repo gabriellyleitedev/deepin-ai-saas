@@ -37,7 +37,7 @@ function Footer() {
             <img
               src={logoImg} // Variável de importação da imagem
               alt="Deepin AI"
-              className="h-20 md:ml-0 -ml-20 md:h-16 lg:h-20 w-auto object-contain  drop-shadow-[0_0_15px_rgba(168,85,247,0.3)]"
+              className="h-20 md:ml-0 -ml-20 md:h-16 lg:h-20 w-auto object-contain drop-shadow-[0_0_15px_rgba(168,85,247,0.6)]"
             />
             <p className="text-slate-500 text-sm leading-relaxed max-w-full">
               Empowering modern enterprises with autonomous AI agents and deep data intelligence.
