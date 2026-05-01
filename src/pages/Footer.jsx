@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import logoImg from "../assets/logo.icon.png";
+import logoImg from "../assets/logo.png";
 
 function Footer() {
   const links = {
@@ -35,7 +35,7 @@ function Footer() {
 
           <div className="lg:col-span-2 flex flex-col md:items-start gap-3 items-center text-center lg:text-left -mt-5">
             <img
-              src="/src/assets/logo.png"
+              src={logoImg} // Variável de importação da imagem
               alt="Deepin AI"
               className="h-20 md:ml-0 -ml-20 md:h-16 lg:h-20 w-auto object-contain  drop-shadow-[0_0_15px_rgba(168,85,247,0.3)]"
             />

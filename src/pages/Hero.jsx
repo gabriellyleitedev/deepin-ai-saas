@@ -47,14 +47,14 @@ const Hero = () => {
                         <span className="text-xs font-medium text-slate-300 tracking-wider uppercase"> The next era of AI v2.0</span>
                     </motion.div>
 
-                    <motion.h1 variants={itemVariants} className="text-5xl lg:text-7xl font-bold leading-tight">
+                    <motion.h1 variants={itemVariants} className="text-4xl lg:text-7xl font-bold leading-tight">
                         Welcome to <br />
                         <span className="bg-clip-text text-transparent bg-linear-to-r from-purple-400 to-indigo-500">
                             DEEPIN AI
                         </span>
                     </motion.h1>
 
-                    <motion.p variants={itemVariants} className="text-lg text-slate-400 max-w-lg leading-relaxed">
+                    <motion.p variants={itemVariants} className="text-md text-slate-400 max-w-xl leading-relaxed">
                         Seamlessly integrate cutting-edge AI into your business architecture. Deepin IA automates the heavy lifting, so your team can focus on high-impact strategy.
                     </motion.p>
 

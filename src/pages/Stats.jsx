@@ -38,7 +38,7 @@ const formatCount = (value, stat) => {
 
 const Stats = () => {
     return (
-        <section className="relative py-24 overflow-hidden">
+        <section className="relative py-20 overflow-hidden">
             {/* Background Ambient Light - Mais sutil */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-purple-600/5 blur-[120px] rounded-full" />
@@ -52,10 +52,10 @@ const Stats = () => {
                     transition={{ duration: 1, ease: "easeOut" }}
                     className="text-center mb-20"
                 >
-                    <h2 className="text-5xl md:text-6xl font-bold text-white mb-4 tracking-tight">
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
                         Platform Impact
                     </h2>
-                    <p className="text-slate-400 max-w-xl mx-auto text-lg">
+                    <p className="text-slate-400 max-w-xl mx-auto text-md">
                         Real-time metrics from our global neural network.
                     </p>
                 </motion.div>

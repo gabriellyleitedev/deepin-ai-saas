@@ -17,7 +17,7 @@ const Features = () => {
     };
 
     return (
-        <section className="relative py-32 overflow-hidden">
+        <section className="relative py-20 overflow-hidden">
 
             {/* Radial Gradient Glow Background */}
             <div className="absolute inset-0 pointer-events-none">
@@ -33,10 +33,10 @@ const Features = () => {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-24"
                 >
-                    <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                         Cutting-Edge Features
                     </h2>
-                    <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto">
+                    <p className="text-md md:text-lg text-slate-400 max-w-2xl mx-auto">
                         Powerful tools designed to accelerate your workflow and maximize results
                     </p>
                 </motion.div>
@@ -80,7 +80,7 @@ const Features = () => {
                                     <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 leading-tight">
                                         {feature.title}
                                     </h3>
-                                    <p className="text-base text-slate-300 leading-relaxed max-w-xs">
+                                    <p className="text-sm md:text-base text-slate-300 leading-relaxed max-w-xs">
                                         {feature.description}
                                     </p>
 

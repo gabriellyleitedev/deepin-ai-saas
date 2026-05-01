@@ -66,7 +66,7 @@ const Testimonials = () => {
     ];
 
     return (
-        <section className="py-32 bg-transparent relative z-10">
+        <section className="py-20 bg-transparent relative z-10">
             <div className="container mx-auto px-6">
 
                 <motion.div
