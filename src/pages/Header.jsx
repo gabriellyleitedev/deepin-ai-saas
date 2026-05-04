@@ -6,7 +6,7 @@ const navigation = [
     { name: 'Home', href: '/' },
     { name: 'Plans', href: '/plans' },
     { name: 'About Us', href: '/about' },
-    { name: 'Contact', href: '#' },
+    { name: 'Contact', href: '/contact' },
 ]
 
 const animationVariants = {

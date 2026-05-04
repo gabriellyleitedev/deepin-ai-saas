@@ -12,7 +12,7 @@ export default function DotGridBackground() {
     }, []);
 
     return (
-        <div className="fixed -top-3 inset-x-0 bottom-0 bg-black pointer-events-none ">
+        <div className="absolute -top-3 inset-x-0 bottom-0 bg-black pointer-events-none ">
 
             {/* 1. LAYER FIXA (Pontinhos sutis visíveis no fundo) */}
             <div
@@ -46,7 +46,7 @@ export default function DotGridBackground() {
 
             {/* 4. GROUNDING GLOW (A "Sombra de Luz" debaixo do globo) */}
             <div
-                className="absolute right-[10%] bottom-[20%] w-[500px] h-[150px] rounded-[100%] z-0 blur-[80px]"
+                className="absolute right-[10%] bottom-[20%] w-125150px] rounded-[100%] z-0 blur-[80px]"
                 style={{
                     background: 'radial-gradient(50% 50% at 50% 50%, rgba(168, 85, 247, 0.15) 0%, transparent 100%)',
                     transform: 'rotate(-5deg)'
@@ -55,7 +55,7 @@ export default function DotGridBackground() {
 
             {/* 5. BACKLIGHT (O rastro que faz o globo saltar da tela) */}
             <div
-                className="absolute right-[15%] top-[25%] w-[400px] h-[400px] rounded-full z-0 blur-[100px] opacity-30"
+                className="absolute right-[15%] top-[25%] w-100 h-100 rounded-full z-0 blur-[100px] opacity-30"
                 style={{
                     background: 'radial-gradient(circle, rgba(139, 92, 246, 0.7) 0%, transparent 70%)',
                 }}

@@ -41,7 +41,7 @@ const Plans = () => {
           transition={{ duration: 1.2 }}
           className="absolute top-10 lg:top-18 md:top-14 left-1/2 -translate-x-1/2 select-none pointer-events-none z-0 w-full text-center px-4"
         >
-          <h2 className="text-[20vw] md:text-[12rem] lg:text-[18rem] font-black text-white/[0.07] leading-none uppercase tracking-tighter break-words">
+          <h2 className="text-[20vw] md:text-[12rem] lg:text-[18rem] font-black text-white/[0.07] leading-none uppercase tracking-tighter wrap-break-word">
             Pricing
           </h2>
         </motion.div>
@@ -64,10 +64,10 @@ const Plans = () => {
                 onClick={() => setActivePlan(i)}
                 variants={revealVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
                 transition={{ delay: i * 0.1 }}
-                className={`relative flex flex-col w-full max-w-md md:max-w-none p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] border cursor-pointer transition-all duration-500 ${activePlan === i ? 'bg-white/[0.08] border-purple-500/50 shadow-[0_0_50px_rgba(168,85,247,0.15)] md:scale-105 z-30' : 'bg-white/2 border-white/10 opacity-60 md:scale-95 z-10 hover:border-white/30'
+                className={`relative flex flex-col w-full max-w-md md:max-w-none p-6 md:p-8 rounded-4xl md:rounded-[2.5rem] border cursor-pointer transition-all duration-500 ${activePlan === i ? 'bg-white/8 border-purple-500/50 shadow-[0_0_50px_rgba(168,85,247,0.15)] md:scale-105 z-30' : 'bg-white/2 border-white/10 opacity-60 md:scale-95 z-10 hover:border-white/30'
                   } backdrop-blur-md`}
               >
-                {activePlan === i && <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent" />}
+                {activePlan === i && <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-purple-500 to-transparent" />}
                 {plan.highlight && <div className="mb-4 md:mb-6 self-start bg-purple-500 text-white text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest">Best Choice</div>}
 
                 <div className="mb-6 md:mb-8">
@@ -124,14 +124,19 @@ const Plans = () => {
       {/* --- SECTION 3:  --- */}
       <section className="py-20 relative z-10 overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 max-w-6xl">
-          <motion.div variants={revealVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col items-center mb-12 md:mb-20 text-center">
-            {logoIcon && <img src={logoIcon} className="max-w-[200px] md:max-w-[350px] mb-4 w-auto object-contain drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]" alt="Logo" />}
+          <motion.div
+            variants={revealVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="flex flex-col items-center mb-12 md:mb-20 text-center">
+            {logoIcon && <img src={logoIcon} className="max-w-50 md:max-w-87.5 mb-4 w-auto object-contain drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]" alt="Logo" />}
             <h2 className="text-4xl md:text-7xl font-black tracking-tighter">Full Infrastructure</h2>
           </motion.div>
 
           <motion.div
             variants={revealVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}
-            className="bg-white/[0.06] border border-white/10 rounded-[1.5rem] md:rounded-[3rem] overflow-x-auto md:overflow-hidden backdrop-blur-2xl"
+            className="bg-white/6 border border-white/10 rounded-3xl md:rounded-[3rem] overflow-x-auto md:overflow-hidden backdrop-blur-2xl"
           >
             <div className="min-w-[600px] md:min-w-full">
               {[
@@ -158,7 +163,7 @@ const Plans = () => {
       <section className="py-20 relative z-10">
         <div className="container mx-auto px-6 max-w-4xl">
           <motion.h2 variants={revealVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-4xl md:text-7xl font-black mb-12 md:mb-20 text-center tracking-tighter">
-            Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-500">Questions</span>
+            Frequently Asked <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-indigo-500">Questions</span>
           </motion.h2>
           <div className="grid gap-4 md:gap-6">
             {[

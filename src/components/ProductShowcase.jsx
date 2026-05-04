@@ -1,6 +1,6 @@
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import dashboardImg from "../assets/dashboard-mockup.png";
+import deepinHero from "../assets/deepin.hero.png";
 
 const ProductShowcase = () => {
   const targetRef = useRef(null);
@@ -22,7 +22,6 @@ const ProductShowcase = () => {
       className="relative py-32 flex flex-col items-center justify-center bg-transparent"
       style={{ perspective: "1500px" }}
     >
-
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -43,8 +42,6 @@ const ProductShowcase = () => {
 
       {/* LUZES DE FUNDO */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-
-        {/* Núcleo Roxo */}
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 h-125 rounded-full"
           style={{
@@ -52,7 +49,6 @@ const ProductShowcase = () => {
             filter: "blur(80px)",
           }}
         />
-        {/* Brilho Azulado */}
         <div
           className="absolute top-[40%] right-[10%] w-150 h-150 rounded-full opacity-30"
           style={{
@@ -67,39 +63,31 @@ const ProductShowcase = () => {
         style={{ rotateX, scale, opacity, z: translateZ, transformStyle: "preserve-3d" }}
         className="relative z-10 md:max-w-7xl w-full px-2"
       >
-        {/* Glow de Borda */}
-        <div className="absolute -inset-px bg-linear-to-tr from-purple-500 via-transparent to-cyan-500 rounded-2xl blur-md opacity-100" />
+        <div className="absolute -inset-px bg-linear-to-tr from-purple-500/20 via-transparent to-cyan-500/40 rounded-2xl blur-md opacity-20" />
 
-        <div className="relative rounded-2xl border border-white/10 bg-[#050505] shadow-[0_0_100px_rgba(0,0,0,1)] overflow-hidden">
-
-          {/* Header do Browser */}
-          <div className="flex items-center justify-between px-6 py-4 bg-white/5 border-b border-white/10">
-            <div className="flex gap-2">
-              <div className="w-2.5 h-2.5 rounded-full bg-purple-500" />
-              <div className="w-2.5 h-2.5 rounded-full bg-purple-500" />
-              <div className="w-2.5 h-2.5 rounded-full bg-purple-500" />
+        <div className="relative rounded-2xl overflow-hidden ">
+          <div className="relative">
+            {/* IMAGEM COM FILTRO DE DESFOQUE E ESCURECIMENTO */}
+            <img
+              src={deepinHero}
+              alt="Dashboard"
+              className="w-full h-auto block brightness-[0.6] blur-[0px]" 
+            />
+            
+            {/* OVERLAY DE TEXTO CENTRALIZADO (WEB VISION) */}
+            <div className="absolute inset-0 flex items-center justify-center z-30">
+                <motion.h3 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  className="text-white text-xl md:text-5xl font-sans mix-blend-overlay opacity-60 border bg-white/40 border-white/20 md:px-6 md:py-6 py-3 px-3 rounded-full"
+                >
+                  Chat Web - Deepin AI
+                </motion.h3>
             </div>
 
-            <div className="w-12" />
-          </div>
-
-          <div className="relative">
-            <img
-              src={dashboardImg}
-              alt="Dashboard"
-              className="w-full h-auto block brightness-[1.05]"
-            />
-            {/* Efeito de Sweep (Brilho passando) */}
-            <motion.div
-              animate={{ x: ["-100%", "250%"] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", repeatDelay: 2 }}
-              className="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent w-1/2 -skew-x-12"
-            />
           </div>
         </div>
 
-        {/* Reflexo no Chão */}
-        <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[110%] h-50 bg-purple-600/20 blur-[100px] rounded-[100%] -z-10 opacity-50" />
       </motion.div>
     </section>
   );
