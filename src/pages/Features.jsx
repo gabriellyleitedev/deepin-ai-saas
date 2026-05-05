@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Sparkles, Zap, BarChart3, Shield, Workflow, Brain } from 'lucide-react';
+import { Sparkles, Zap, BarChart3, Shield, Workflow, Brain, Globe } from 'lucide-react';
 import React from 'react';
 
 const Features = () => {
@@ -34,10 +34,10 @@ const Features = () => {
                     className="text-center mb-24"
                 >
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                        Cutting-Edge Features
+                        Never lose a lead again
                     </h2>
                     <p className="text-md md:text-lg text-slate-400 max-w-2xl mx-auto">
-                        Powerful tools designed to accelerate your workflow and maximize results
+                        Deepin AI replies to your leads instantly, qualifies them, and helps you close more deals automatically.
                     </p>
                 </motion.div>
 
@@ -85,7 +85,7 @@ const Features = () => {
                                     </p>
 
                                     {/* Hover Accent */}
-                                    <div className="absolute bottom-0 left-0 w-0 h-1 bg-linear-to-r from-purple-500 to-pink-500 group-hover:w-12 transition-all duration-300 rounded-full" />
+                                    <div className="absolute bottom-0 left-2 w-0 h-1 bg-linear-to-r from-purple-500 to-pink-500 group-hover:w-12 transition-all duration-300 rounded-full" />
                                 </div>
                             </motion.div>
                         );
@@ -97,42 +97,36 @@ const Features = () => {
 };
 
 const featureData = [
-    {
-        icon: Sparkles,
-        title: "AI-Powered Insights",
-        description: "Leverage advanced AI to unlock deep insights from your data and make smarter decisions faster.",
-        colSpan: "md:col-span-1 lg:col-span-1"
-    },
-    {
-        icon: Zap,
-        title: "Lightning Fast",
-        description: "Experience blazing-fast performance optimized for real-time operations and instant results.",
-        colSpan: "md:col-span-1 lg:col-span-1"
-    },
-    {
-        icon: BarChart3,
-        title: "Real-Time Analytics",
-        description: "Monitor metrics and analyze trends as they happen with powerful real-time dashboards.",
-        colSpan: "md:col-span-1 lg:col-span-1"
-    },
-    {
-        icon: Shield,
-        title: "Enterprise Security",
-        description: "Bank-grade encryption and compliance standards to protect your sensitive data.",
-        colSpan: "md:col-span-1 lg:col-span-1"
-    },
-    {
-        icon: Workflow,
-        title: "Seamless Integration",
-        description: "Connect effortlessly with your existing tools and workflows through flexible APIs.",
-        colSpan: "md:col-span-1 lg:col-span-1"
-    },
-    {
-        icon: Brain,
-        title: "Smart Automation",
-        description: "Automate repetitive tasks and let intelligent systems handle the heavy lifting.",
-        colSpan: "md:col-span-1 lg:col-span-1"
-    }
+  {
+    icon: Zap,
+    title: "Instant Replies",
+    description: "Respond to every lead in seconds, even when you're offline."
+  },
+  {
+    icon: Brain,
+    title: "AI That Understands",
+    description: "Deepin AI understands what your lead wants and replies like a human."
+  },
+  {
+    icon: BarChart3,
+    title: "Lead Qualification",
+    description: "Automatically identify serious clients and filter out time-wasters."
+  },
+  {
+    icon: Workflow,
+    title: "Automated Conversations",
+    description: "Handle full conversations without lifting a finger."
+  },
+  {
+    icon: Globe,
+    title: "Works 24/7",
+    description: "Your business never sleeps — and neither does your AI."
+  },
+  {
+    icon: Shield,
+    title: "No Missed Opportunities",
+    description: "Every message gets answered. Every lead gets a chance."
+  }
 ];
 
 export default Features;

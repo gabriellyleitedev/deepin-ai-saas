@@ -44,7 +44,7 @@ const Hero = () => {
                 >
                     <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3 py-1 rounded-full w-fit">
                         <span className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></span>
-                        <span className="text-xs font-medium text-slate-300 tracking-wider uppercase"> The next era of AI v2.0</span>
+                        <span className="text-xs font-medium text-slate-300 tracking-wider uppercase"> AI-powered lead response for service businesses</span>
                     </motion.div>
 
                     <motion.h1 variants={itemVariants} className="text-4xl lg:text-7xl font-bold leading-tight">
@@ -55,7 +55,7 @@ const Hero = () => {
                     </motion.h1>
 
                     <motion.p variants={itemVariants} className="text-md text-slate-400 max-w-xl leading-relaxed">
-                        Seamlessly integrate cutting-edge AI into your business architecture. Deepin IA automates the heavy lifting, so your team can focus on high-impact strategy.
+                       Stop losing clients because you reply too late. Deepin AI automatically responds to your leads in seconds, so you never miss a sale again.
                     </motion.p>
 
                     {/* Container dos Botões */}
@@ -66,7 +66,7 @@ const Hero = () => {
                             whileTap={{ scale: 0.95 }}
                             className="px-8 py-4 border hover:border-purple-500 bg-white text-black font-bold rounded-xl shadow-[0_0_20px_rgba(168,85,247,0.4)] cursor-pointer transition duration-300"
                         >
-                            Get Started
+                            Start replying instantly
                         </motion.button>
 
                         <motion.button
@@ -78,7 +78,7 @@ const Hero = () => {
                             whileTap={{ scale: 0.95 }}
                             className="px-8 py-4 bg-white/10 text-white border border-white/20 rounded-xl font-bold transition-colors cursor-pointer duration-300 "
                         >
-                            View Documentation
+                            See how it works
                         </motion.button>
                     </motion.div>
                 </motion.div>

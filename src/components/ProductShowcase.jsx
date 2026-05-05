@@ -19,7 +19,7 @@ const ProductShowcase = () => {
   return (
     <section
       ref={targetRef}
-      className="relative py-32 flex flex-col items-center justify-center bg-transparent"
+      className="relative py-20 flex flex-col items-center justify-center bg-transparent"
       style={{ perspective: "1500px" }}
     >
       <motion.div
@@ -29,14 +29,13 @@ const ProductShowcase = () => {
         className="text-center mb-16 px-6 relative z-20"
       >
         <h2 className="text-4xl lg:text-6xl font-bold tracking-tighter mb-4">
-          The Operating System for <br />
+          Watch how Deepin AI replies <br />
           <span className="bg-clip-text text-transparent bg-linear-to-r from-purple-400 to-indigo-500">
-            Next-Gen SaaS
+            for you 
           </span>
         </h2>
         <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-          Deepin AI automates your complex workflows, turning data into strategic advantages.
-          The intelligence your business stack was missing.
+         A real conversation handled by AI responding instantly, qualifying the lead, and keeping the sale alive.
         </p>
       </motion.div>
 
@@ -79,9 +78,9 @@ const ProductShowcase = () => {
                 <motion.h3 
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  className="text-white text-xl md:text-5xl font-sans mix-blend-overlay opacity-60 border bg-white/40 border-white/20 md:px-6 md:py-6 py-3 px-3 rounded-full"
+                  className="text-white text-xl md:text-5xl font-sans mix-blend-overlay opacity-60 border bg-white/40  backdrop-blur-md border-white/20 md:px-6 md:py-6 py-3 px-3 rounded-full"
                 >
-                  Chat Web - Deepin AI
+                  Lead replied in 3 seconds
                 </motion.h3>
             </div>
 

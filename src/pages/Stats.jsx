@@ -2,10 +2,10 @@
 import { animate, motion, useInView } from 'framer-motion';
 
 const statsData = [
-    { label: 'Active Users', target: 1200000, suffix: '+', format: 'compact' },
-    { label: 'Projects Completed', target: 5000, suffix: '+', format: 'compact' },
-    { label: 'Customer Satisfaction', target: 98, suffix: '%', format: 'plain' },
-    { label: 'Global Reach', target: 150, suffix: '+', format: 'plain', extra: 'Countries' }
+    { label: 'Reply time', target: 5, suffix: 's' },
+    { label: 'Leads answered', target: 100, suffix: '%' },
+    { label: 'Online', target: 24, suffix: '/7' },
+    { label: 'Missed leads', target: 0 },
 ];
 
 const useCountUp = (target, duration = 1.6, delay = 0) => {
@@ -53,7 +53,7 @@ const Stats = () => {
                     className="text-center mb-20"
                 >
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-                        Platform Impact
+                        What happens when you reply instantly
                     </h2>
                     <p className="text-slate-400 max-w-xl mx-auto text-md">
                         Real-time metrics from our global neural network.

@@ -3,10 +3,10 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom'; // useLocation para efeitos ativos
 
 const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'Plans', href: '/plans' },
-    { name: 'About Us', href: '/about' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Product', href: '/' },
+    { name: 'Pricing', href: '/plans' },
+    { name: 'Company', href: '/about' },
+   {/*  { name: 'Contact', href: '/contact' }, */}
 ]
 
 const animationVariants = {
@@ -42,7 +42,7 @@ function Header() {
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden items-center gap-8 lg:flex">
+                    <nav className="hidden items-center gap-16 lg:flex">
                         {navigation.map((item) => (
                             <Link
                                 key={item.name}
@@ -61,7 +61,7 @@ function Header() {
                         </button>
 
                         <Link to="/plans" className="relative hidden overflow-hidden rounded-full bg-[#8b5cf6] px-12 py-2.5 text-sm font-bold text-white transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(139,92,246,0.6)] group md:inline-flex items-center justify-center">
-                            <span className="relative z-10">Be Deepin</span>
+                            <span className="relative z-10">See it in action</span>
                             <div className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
                         </Link>
 
@@ -103,7 +103,7 @@ function Header() {
                                     Sign In
                                 </Link>
                                 <Link to="/plans" className="w-full py-4 text-center rounded-xl bg-[#8b5cf6] text-white font-bold text-sm shadow-[0_0_20px_rgba(139,92,246,0.3)]">
-                                    Be Deepin
+                                    See it in action
                                 </Link>
                             </div>
                         </motion.div>
