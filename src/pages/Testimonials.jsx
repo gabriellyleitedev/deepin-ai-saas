@@ -1,28 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Star } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Testimonials = () => {
-
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.2,
-            },
-        },
-    };
-
-    const cardVariants = {
-        hidden: { opacity: 0, y: 30, scale: 0.95 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
-        },
-    };
 
     const testimonials = [
         {
@@ -69,95 +49,145 @@ const Testimonials = () => {
         }
     ];
 
+    const [index, setIndex] = useState(0);
+    const [itemsPerView, setItemsPerView] = useState(3);
+
+    useEffect(() => {
+        const update = () => {
+            if (window.innerWidth < 768) setItemsPerView(1);
+            else if (window.innerWidth < 1024) setItemsPerView(2);
+            else setItemsPerView(3);
+        };
+
+        update();
+        window.addEventListener('resize', update);
+        return () => window.removeEventListener('resize', update);
+    }, []);
+
+    const maxIndex = Math.max(0, testimonials.length - itemsPerView);
+
+    const next = () => {
+        setIndex((prev) => Math.min(prev + itemsPerView, maxIndex));
+    };
+
+    const prev = () => {
+        setIndex((prev) => Math.max(prev - itemsPerView, 0));
+    };
+
     return (
-        <section className="py-20 bg-transparent relative z-10">
-            <div className="container mx-auto px-6">
+        <section className="py-24 relative">
+
+            <div className="max-w-7xl mx-auto px-6">
 
                 {/* HEADER */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-center mb-24"
+                    transition={{ duration: 0.8, delay: 0.1 }}
+                    className="text-center mb-20"
                 >
-                    <h2 className="text-4xl lg:text-6xl font-bold tracking-tighter mb-10 text-white">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
                         What happens when you reply instantly
                     </h2>
-                    <p className="text-slate-400 max-w-xl mx-auto mb-10">
-                        Businesses using Deepin reply faster, close more deals, and never miss a lead again.
-                    </p>
+                    <motion.p
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+
+                        className="text-slate-400 max-w-xl md:text-lg text-md mx-auto">
+                        Faster replies. More conversations. More revenue.
+                    </motion.p>
                 </motion.div>
 
-                {/* GRID */}
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
-                >
-                    {testimonials.map((testimonial) => (
+                <div className="relative">
+
+                    {/* BOTÃO ESQUERDA */}
+                    <button
+                        onClick={prev}
+                        disabled={index === 0}
+                        className="absolute left-2 md:-left-5 top-1/2 -translate-y-1/2 z-20 
+                        w-10 h-10 rounded-full border border-white/10 bg-white/5 
+                        flex items-center justify-center text-white hover:bg-white/10 
+                        disabled:opacity-30 transition"
+                    >
+                        <ChevronLeft />
+                    </button>
+
+                    {/* BOTÃO DIREITA */}
+                    <button
+                        onClick={next}
+                        disabled={index >= maxIndex}
+                        className="absolute right-2 md:-right-5 top-1/2 -translate-y-1/2 z-20 
+                        w-10 h-10 rounded-full border border-white/10 bg-white/5 
+                        flex items-center justify-center text-white hover:bg-white/10 
+                        disabled:opacity-30 transition"
+                    >
+                        <ChevronRight />
+                    </button>
+
+                    {/* VIEWPORT */}
+                    <div className="overflow-hidden">
+
                         <motion.div
-                            key={testimonial.name}
-                            variants={cardVariants}
-                            whileHover={{ y: -6 }}
-                            className="
-                                group
-                                bg-white/3
-                                border border-white/10
-                                p-8
-                                rounded-2xl
-                                backdrop-blur-sm
-                                hover:bg-white/5
-                                hover:border-purple-500/30
-                                transition-all
-                                duration-300
-                            "
+                            animate={{
+                                x: `-${index * (100 / itemsPerView)}%`
+                            }}
+                            transition={{ duration: 0.6, ease: "easeInOut" }}
+                            className="flex"
                         >
 
-                            {/* RESULT BADGE */}
-                            <div className="inline-block mb-3 px-3 py-1 text-xs font-bold rounded-full 
-                                bg-purple-500/10 text-purple-300 border border-purple-500/20
-                                group-hover:shadow-[0_0_20px_rgba(139,92,246,0.2)]
-                                transition">
-                                {testimonial.result}
-                            </div>
+                            {testimonials.map((testimonial, i) => (
+                                <div
+                                    key={i}
+                                    className="min-w-full md:min-w-[50%] lg:min-w-[33.333%] flex px-4 md:px-3"
+                                >
 
-                            {/* STARS */}
-                            <div className="flex gap-1 mb-4">
-                                {[...Array(5)].map((_, i) => (
-                                    <Star
-                                        key={i}
-                                        className="w-4 h-4 text-purple-400 fill-purple-400"
-                                    />
-                                ))}
-                            </div>
+                                    <div className="group h-full flex flex-col justify-between bg-white/3 border border-white/10 p-8 rounded-2xl backdrop-blur-sm hover:bg-white/5 hover:border-purple-500/30 transition">
 
-                            {/* TEXT */}
-                            <p className="text-slate-300 text-lg leading-relaxed mb-8">
-                                "{testimonial.text}"
-                            </p>
+                                        {/* RESULT */}
+                                        <div className="inline-block mb-3 px-3 py-1 text-xs font-bold rounded-full 
+                                            bg-purple-500/10 text-purple-300 border border-purple-500/20">
+                                            {testimonial.result}
+                                        </div>
 
-                            {/* USER */}
-                            <div className="flex items-center">
-                                <img
-                                    src={testimonial.image}
-                                    alt={testimonial.name}
-                                    className="w-12 h-12 rounded-full mr-4 border border-purple-500/30"
-                                />
-                                <div>
-                                    <p className="font-bold text-white">
-                                        {testimonial.name}
-                                    </p>
-                                    <p className="text-sm text-purple-400/80">
-                                        {testimonial.role}
-                                    </p>
+                                        {/* STARS */}
+                                        <div className="flex gap-1 mb-4">
+                                            {[...Array(5)].map((_, i) => (
+                                                <Star key={i} className="w-4 h-4 text-purple-400 fill-purple-400" />
+                                            ))}
+                                        </div>
+
+                                        {/* TEXT */}
+                                        <p className="text-slate-300 text-lg mb-8">
+                                            "{testimonial.text}"
+                                        </p>
+
+                                        {/* USER */}
+                                        <div className="flex items-center">
+                                            <img
+                                                src={testimonial.image}
+                                                alt=""
+                                                className="w-12 h-12 rounded-full mr-4 border border-purple-500/30"
+                                            />
+                                            <div>
+                                                <p className="font-bold text-white">
+                                                    {testimonial.name}
+                                                </p>
+                                                <p className="text-sm text-purple-400/80">
+                                                    {testimonial.role}
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
                                 </div>
-                            </div>
+                            ))}
 
                         </motion.div>
-                    ))}
-                </motion.div>
+
+                    </div>
+                </div>
             </div>
         </section>
     );

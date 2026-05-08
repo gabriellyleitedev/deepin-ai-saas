@@ -18,7 +18,7 @@ const useCountUp = (target, duration = 1.6, delay = 0) => {
         const controls = animate(0, target, {
             duration,
             delay,
-            ease: [0.25, 1, 0.5, 1], // Custom cubic-bezier para suavidade total
+            ease: [0.25, 1, 0.5, 1], // Custom cubic-bezier suavidade total
             onUpdate(latest) { setValue(Math.round(latest)); }
         });
         return () => controls.stop();
@@ -39,25 +39,28 @@ const formatCount = (value, stat) => {
 const Stats = () => {
     return (
         <section className="relative py-20 overflow-hidden">
-            {/* Background Ambient Light - Mais sutil */}
+
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-purple-600/5 blur-[120px] rounded-full" />
             </div>
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <motion.div
-                    initial={{ opacity: 0, y: 15 }}
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, ease: "easeOut" }}
+                    transition={{ duration: 0.8, delay: 0.1 }}
                     className="text-center mb-20"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
                         What happens when you reply instantly
                     </h2>
-                    <p className="text-slate-400 max-w-xl mx-auto text-md">
+                    <motion.p
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="text-slate-400 max-w-xl mx-auto text-md md:text-lg">
                         Real-time metrics from our global neural network.
-                    </p>
+                    </motion.p>
                 </motion.div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -74,7 +77,7 @@ const Stats = () => {
                                 transition={{ duration: 0.8, delay: index * 0.1 }}
                                 className="group relative"
                             >
-                                {/* Glow de Hover - Agora ele só aparece no hover e é suave */}
+                                {/* Glow de Hover */}
                                 <div className="absolute inset-0 bg-purple-500/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-4xl" />
 
                                 <div className="relative h-full rounded-4xl border border-white/5 bg-white/2 backdrop-blur-md p-8 transition-all duration-500 group-hover:border-white/10 group-hover:bg-white/4">

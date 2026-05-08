@@ -25,20 +25,24 @@ const Features = () => {
             </div>
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
+
                 {/* Section Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 0.8, delay: 0.1 }}
                     className="text-center mb-24"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
                         Never lose a lead again
                     </h2>
-                    <p className="text-md md:text-lg text-slate-400 max-w-2xl mx-auto">
+                    <motion.p
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="text-md md:text-lg text-slate-400 max-w-2xl mx-auto">
                         Deepin AI replies to your leads instantly, qualifies them, and helps you close more deals automatically.
-                    </p>
+                    </motion.p>
                 </motion.div>
 
                 {/* Bento Grid */}
@@ -97,36 +101,36 @@ const Features = () => {
 };
 
 const featureData = [
-  {
-    icon: Zap,
-    title: "Instant Replies",
-    description: "Respond to every lead in seconds, even when you're offline."
-  },
-  {
-    icon: Brain,
-    title: "AI That Understands",
-    description: "Deepin AI understands what your lead wants and replies like a human."
-  },
-  {
-    icon: BarChart3,
-    title: "Lead Qualification",
-    description: "Automatically identify serious clients and filter out time-wasters."
-  },
-  {
-    icon: Workflow,
-    title: "Automated Conversations",
-    description: "Handle full conversations without lifting a finger."
-  },
-  {
-    icon: Globe,
-    title: "Works 24/7",
-    description: "Your business never sleeps — and neither does your AI."
-  },
-  {
-    icon: Shield,
-    title: "No Missed Opportunities",
-    description: "Every message gets answered. Every lead gets a chance."
-  }
+    {
+        icon: Zap,
+        title: "Instant Replies",
+        description: "Respond to every lead in seconds, even when you're offline."
+    },
+    {
+        icon: Brain,
+        title: "AI That Understands",
+        description: "Deepin AI understands what your lead wants and replies like a human."
+    },
+    {
+        icon: BarChart3,
+        title: "Lead Qualification",
+        description: "Automatically identify serious clients and filter out time-wasters."
+    },
+    {
+        icon: Workflow,
+        title: "Automated Conversations",
+        description: "Handle full conversations without lifting a finger."
+    },
+    {
+        icon: Globe,
+        title: "Works 24/7",
+        description: "Your business never sleeps — and neither does your AI."
+    },
+    {
+        icon: Shield,
+        title: "No Missed Opportunities",
+        description: "Every message gets answered. Every lead gets a chance."
+    }
 ];
 
 export default Features;

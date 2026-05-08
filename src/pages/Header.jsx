@@ -36,7 +36,6 @@ function Header() {
             <header className="w-full max-w-7xl border border-white/10 bg-white/1 backdrop-blur-md rounded-xl transition-all duration-300">
                 <div className="mx-auto flex items-center justify-between px-5 py-3">
 
-                    {/* Usei Link aqui também pra a logo voltar para a Home */}
                     <Link to="/" className="text-xl font-black tracking-tight text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-indigo-500">
                         DEEPIN AI
                     </Link>

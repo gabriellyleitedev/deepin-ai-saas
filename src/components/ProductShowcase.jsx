@@ -23,20 +23,25 @@ const ProductShowcase = () => {
       style={{ perspective: "1500px" }}
     >
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.8, delay: 0.1 }}
         className="text-center mb-16 px-6 relative z-20"
       >
-        <h2 className="text-4xl lg:text-6xl font-bold tracking-tighter mb-4">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter mb-4">
           Watch how Deepin AI replies <br />
           <span className="bg-clip-text text-transparent bg-linear-to-r from-purple-400 to-indigo-500">
-            for you 
+            for you
           </span>
         </h2>
-        <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-         A real conversation handled by AI responding instantly, qualifying the lead, and keeping the sale alive.
-        </p>
+        <motion.p
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+
+          className="text-slate-400 md:text-lg text-md max-w-2xl mx-auto">
+          A real conversation handled by AI responding instantly, qualifying the lead, and keeping the sale alive.
+        </motion.p>
       </motion.div>
 
       {/* LUZES DE FUNDO */}
@@ -66,22 +71,23 @@ const ProductShowcase = () => {
 
         <div className="relative rounded-2xl overflow-hidden ">
           <div className="relative">
+
             {/* IMAGEM COM FILTRO DE DESFOQUE E ESCURECIMENTO */}
             <img
               src={deepinHero}
               alt="Dashboard"
-              className="w-full h-auto block brightness-[0.6] blur-[0px]" 
+              className="w-full h-auto block brightness-[0.6] blur-[0px]"
             />
-            
+
             {/* OVERLAY DE TEXTO CENTRALIZADO (WEB VISION) */}
             <div className="absolute inset-0 flex items-center justify-center z-30">
-                <motion.h3 
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  className="text-white text-xl md:text-5xl font-sans mix-blend-overlay opacity-60 border bg-white/40  backdrop-blur-md border-white/20 md:px-6 md:py-6 py-3 px-3 rounded-full"
-                >
-                  Lead replied in 3 seconds
-                </motion.h3>
+              <motion.h3
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                className="text-white text-xl md:text-5xl font-sans mix-blend-overlay opacity-60 border bg-white/40  backdrop-blur-md border-white/20 md:px-6 md:py-6 py-3 px-3 rounded-full"
+              >
+                Lead replied in 3 seconds
+              </motion.h3>
             </div>
 
           </div>

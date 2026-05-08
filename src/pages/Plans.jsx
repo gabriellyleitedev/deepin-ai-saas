@@ -18,33 +18,111 @@ const Plans = () => {
   };
 
   const plans = [
-    { name: "Starter", price: "0", features: ["Up to 2 projects", "Basic AI insights", "Community support", "Limited exports"], button: "Get Started" },
-    { name: "Professional", price: isYearly ? "79" : "99", features: ["Unlimited projects", "Deepin AI Pro features", "Priority 24/7 support", "Advanced analytics", "Custom integrations"], button: "Try for Free", highlight: true },
-    { name: "Enterprise", price: isYearly ? "159" : "199", features: ["Everything in Pro", "Dedicated Account Manager", "Custom AI training", "SSO & Security suite"], button: "Contact Sales" }
+    {
+      name: "Starter",
+      price: "0",
+      features: [
+        "Reply to leads automatically",
+        "Basic AI responses",
+        "Up to 2 active conversations",
+        "Email support"
+      ],
+      button: "Start for free"
+    },
+
+    {
+      name: "Professional",
+      price: isYearly ? "79" : "99",
+      features: [
+        "Unlimited conversations",
+        "Human-like AI replies",
+        "Instant responses (<5s)",
+        "Lead qualification automation",
+        "Priority 24/7 support"
+      ],
+      button: "Start closing more deals",
+      highlight: true
+    },
+
+    {
+      name: "Enterprise",
+      price: isYearly ? "159" : "199",
+      features: [
+        "Everything in Professional",
+        "Custom AI trained for your business",
+        "Multi-channel support",
+        "Dedicated success manager",
+        "Advanced security & integrations"
+      ],
+      button: "Talk to sales"
+    }
   ];
 
   const coreFeatures = [
-    { title: "Neural Latency", desc: "Global edge nodes ensure responses in under 400ms.", icon: <ZapIcon size={24} /> },
-    { title: "Data Sovereignty", desc: "Isolated hardware layers for maximum security.", icon: <Lock size={24} /> },
-    { title: "Visual Insights", desc: "Real-time monitoring of your AI operations.", icon: <BarChart3 size={24} /> },
-    { title: "API Fabric", desc: "Robust endpoints that scale with your traffic.", icon: <Layers size={24} /> }
+    {
+      title: "Instant Responses",
+      desc: "Reply to every lead in seconds with AI-powered conversations that feel human.",
+      icon: <ZapIcon size={24} />
+    },
+
+    {
+      title: "Lead Qualification",
+      desc: "Automatically identify high-intent customers and prioritize the best opportunities.",
+      icon: <BarChart3 size={24} />
+    },
+
+    {
+      title: "Multi-Channel Support",
+      desc: "Manage conversations across WhatsApp, Instagram, and your website in one place.",
+      icon: <Globe size={24} />
+    },
+
+    {
+      title: "Secure Infrastructure",
+      desc: "Enterprise-grade security and scalable architecture built for modern businesses.",
+      icon: <Lock size={24} />
+    }
   ];
 
   return (
     <div className="min-h-screen bg-[#000000] text-white selection:bg-purple-500/30 overflow-x-hidden pt-10 md:pt-20">
 
       {/* --- SECTION 1: HERO PRICING --- */}
-      <section className="relative py-12 md:py-20 lg:py-32 bg-transparent overflow-hidden">
+      <section className="relative py-20 md:py-20 lg:py-26 bg-transparent overflow-hidden">
+
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2 }}
-          className="absolute top-10 lg:top-18 md:top-14 left-1/2 -translate-x-1/2 select-none pointer-events-none z-0 w-full text-center px-4"
-        >
-          <h2 className="text-[20vw] md:text-[12rem] lg:text-[18rem] font-black text-white/[0.07] leading-none uppercase tracking-tighter break-words">
+          className="absolute left-1/2 -translate-x-1/2 top-[15%] md:top-[25%] lg:top-[25%] w-full text-center pointer-events-none z-0">
+          <h2 className="text-[24vw] md:text-[10rem] lg:text-[16rem] font-black text-white/[0.09] uppercase tracking-tighter leading-none">
             Pricing
           </h2>
         </motion.div>
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+
+          {/* HEADER */}
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight text-center "
+          >
+            Stop losing leads. <br className="hidden md:block" />
+            Start closing more deals.
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-slate-400 max-w-xl mx-auto text-md md:text-lg text-center mb-12 lg:mb-16"
+          >
+            Reply faster. Close more. Grow automatically.
+          </motion.p>
+
+        </div>
 
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
@@ -101,16 +179,23 @@ const Plans = () => {
       {/* --- SECTION 2: BENTO GRID --- */}
       <section className="py-20 md:py-32 relative z-10 bg-white/90 border-y border-white/5 backdrop-blur-sm">
         <div className="container mx-auto px-6 max-w-7xl">
-          <motion.div variants={revealVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-16 md:mb-24">
-            <h2 className="text-4xl md:text-7xl text-purple-500 font-black tracking-tighter mb-4 md:mb-6">Neural Capabilities</h2>
-            <p className="text-black uppercase tracking-[0.3em] md:tracking-[0.5em] text-[10px] md:text-sm">Standard across all layers</p>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-center mb-16 md:mb-24">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl text-purple-500 font-bold tracking-tighter mb-4 md:mb-6">Everything your sales team needs</h2>
+            <motion.p
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }} className="text-black uppercase tracking-[0.3em] md:tracking-[0.5em] text-[10px] md:text-sm">Built to automate conversations and increase conversions</motion.p>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {coreFeatures.map((item, idx) => (
               <motion.div
                 key={idx} variants={revealVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: idx * 0.1 }}
-                className="p-8 md:p-10 rounded-[2rem] bg-black border border-white/10 hover:border-purple-500/50 transition-all group"
+                className="p-8 md:p-5 rounded-[2rem] bg-black border border-white/10 hover:border-purple-500/50 transition-all group"
               >
                 <div className="text-purple-500 mb-6 group-hover:scale-110 transition-transform duration-700">{item.icon}</div>
                 <h4 className="text-lg md:text-xl font-bold mb-3 ">{item.title}</h4>
@@ -124,9 +209,13 @@ const Plans = () => {
       {/* --- SECTION 3:  --- */}
       <section className="py-20 relative z-10 overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 max-w-6xl">
-          <motion.div variants={revealVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col items-center mb-12 md:mb-20 text-center">
+
+          <motion.div initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }} className="flex flex-col items-center mb-12 md:mb-20 text-center">
+
             {logoIcon && <img src={logoIcon} className="max-w-[200px] md:max-w-[350px] mb-4 w-auto object-contain drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]" alt="Logo" />}
-            <h2 className="text-4xl md:text-7xl font-black tracking-tighter">Full Infrastructure</h2>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter"> Built to scale with your business</h2>
           </motion.div>
 
           <motion.div
@@ -135,11 +224,40 @@ const Plans = () => {
           >
             <div className="min-w-[600px] md:min-w-full">
               {[
-                { label: "Max Ops / Minute", v1: "5k", v2: "25k", v3: "Unlimited" },
-                { label: "Context Window", v1: "128k", v2: "512k", v3: "1.5M+" },
-                { label: "Global Edge Nodes", v1: "12", v2: "48", v3: "All Regions" },
-                { label: "Dedicated IP", v1: "No", v2: "Optional", v3: "Included" },
-                { label: "SLA Guarantee", v1: "99.5%", v2: "99.9%", v3: "99.999%" }
+                {
+                  label: "Active Conversations",
+                  v1: "100",
+                  v2: "Unlimited",
+                  v3: "Unlimited"
+                },
+
+                {
+                  label: "AI Response Speed",
+                  v1: "<10s",
+                  v2: "<5s",
+                  v3: "Priority Routing"
+                },
+
+                {
+                  label: "Channels Supported",
+                  v1: "1 Channel",
+                  v2: "3 Channels",
+                  v3: "Custom Channels"
+                },
+
+                {
+                  label: "Automation Flows",
+                  v1: "Basic",
+                  v2: "Advanced",
+                  v3: "Custom Workflows"
+                },
+
+                {
+                  label: "Support",
+                  v1: "Community",
+                  v2: "24/7 Priority",
+                  v3: "Dedicated Manager"
+                }
               ].map((row, idx) => (
                 <div key={idx} className="grid grid-cols-4 p-6 md:p-10 border-t border-white/5 first:border-none group hover:bg-white/[0.03] transition-colors">
                   <div className="text-xs md:text-sm font-bold text-white/80">{row.label}</div>
@@ -150,57 +268,161 @@ const Plans = () => {
               ))}
             </div>
           </motion.div>
-          <p className="text-center text-white/20 text-[10px] mt-4 md:hidden">← Swipe to see more →</p>
+          <p className="text-center text-white/20 text-[10px] mt-4 md:hidden">← Swipe to compare plans →</p>
         </div>
       </section>
 
       {/* --- SECTION 5: FAQ --- */}
-      <section className="py-20 relative z-10">
+      <section className="py-26 relative z-10">
         <div className="container mx-auto px-6 max-w-4xl">
-          <motion.h2 variants={revealVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-4xl md:text-7xl font-black mb-12 md:mb-20 text-center tracking-tighter">
-            Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-500">Questions</span>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-12 md:mb-20 text-center tracking-tighter"
+          >
+            Questions before{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-500">
+              you scale?
+            </span>
           </motion.h2>
+
           <div className="grid gap-4 md:gap-6">
-            {[
-              { q: "How do Neural Ops work?", a: "Neural Operations (Ops) are the currency of compute on Deepin AI." },
-              { q: "Can I switch plans mid-month?", a: "Absolutely. When you upgrade, the change is instant." },
-              { q: "Do you offer custom training?", a: "Yes, for enterprise partners, we can fine-tune base models on proprietary data." }
+            {[{
+              q: "Can I cancel anytime?",
+              a: "Yes. You can upgrade, downgrade, or cancel your plan at any time without long-term contracts."
+            },
+            {
+              q: "Which platforms does Deepin support?",
+              a: "Deepin works with WhatsApp, Instagram, websites, and other communication channels depending on your plan."
+            },
+            {
+              q: "Does the AI sound human?",
+              a: "Yes. Deepin is designed to generate natural conversations that feel fast, contextual, and personalized."
+            },
+            {
+              q: "Can I train the AI for my business?",
+              a: "Absolutely. Enterprise plans include custom AI training tailored to your business, products, and workflows."
+            }
             ].map((faq, i) => (
+
               <motion.div
-                key={i} variants={revealVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                className="group border border-white/10 bg-white/[0.06] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden"
+                key={i}
+                variants={revealVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="group border border-white/10 bg-white/[0.06] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden backdrop-blur-xl"
               >
-                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full p-6 md:p-10 flex justify-between items-center text-left hover:bg-white/[0.03] transition-all">
-                  <span className="font-bold text-sm md:text-lg">{faq.q}</span>
-                  <div className={`transition-transform duration-500 ${openFaq === i ? 'rotate-180' : ''}`}><Plus size={18} className={openFaq === i ? 'text-purple-500' : 'text-white/20'} /></div>
+
+                <button
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  className="w-full p-6 md:p-10 flex justify-between items-center text-left hover:bg-white/[0.03] transition-all duration-300"
+                >
+
+                  <span className="font-bold text-sm md:text-lg">
+                    {faq.q}
+                  </span>
+
+                  <div
+                    className={`transition-transform duration-500 ${openFaq === i ? 'rotate-180' : ''
+                      }`}
+                  >
+                    <Plus
+                      size={18}
+                      className={
+                        openFaq === i
+                          ? 'text-purple-500'
+                          : 'text-white/20'
+                      }
+                    />
+                  </div>
+
                 </button>
+
                 <AnimatePresence>
                   {openFaq === i && (
-                    <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
-                      <p className="p-6 md:p-10 pt-0 text-white/40 leading-loose text-xs md:text-sm">{faq.a}</p>
+
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.35 }}
+                      className="overflow-hidden"
+                    >
+
+                      <p className="p-6 md:p-10 pt-0 text-white/40 leading-loose text-xs md:text-sm">
+                        {faq.a}
+                      </p>
+
                     </motion.div>
+
                   )}
                 </AnimatePresence>
+
               </motion.div>
+
             ))}
+
           </div>
         </div>
       </section>
 
-      {/* --- SECTION 6: CTA FINAL --- */}
-      <section className="py-20 md:py-40 relative z-10 text-center overflow-hidden">
-        <div className="container mx-auto px-6">
-          <motion.h2
-            variants={revealVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}
-            className="text-5xl md:text-9xl font-black tracking-tighter mb-8 md:mb-12 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-500"
+      {/* --- SECTION 6: FINAL CTA --- */}
+      <section className="py-16 md:py-20 relative z-10 text-center overflow-hidden">
+
+        {/* Glow background */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.15),transparent_60%)] pointer-events-none" />
+
+        {/* Background text */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
+          <h2 className="text-[22vw] md:text-[14rem] lg:text-[18rem] font-bold text-white/[0.03] tracking-tighter leading-none">
+            DEEPIN
+          </h2>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+
+          <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="max-w-4xl mx-auto"
           >
-            BE DEEPIN
-          </motion.h2>
-          <motion.div variants={revealVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="relative inline-block group">
-            <div className="absolute inset-0 bg-purple-600 blur-[60px] opacity-20 group-hover:opacity-40 transition-opacity" />
-            <button className="relative px-10 md:px-20 py-6 md:py-8 bg-white text-black font-black uppercase tracking-[0.2em] md:tracking-[0.5em] text-xs md:text-sm rounded-full border hover:border-purple-500 shadow-2xl transition duration-300">
-              Start Building Now
-            </button>
+
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-500/20 bg-purple-500/10 text-purple-300 text-[10px] md:text-xs uppercase tracking-widest font-base mb-8">
+              AI SALES AUTOMATION
+            </span>
+
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-none mb-8">
+              Your business
+              <br />
+              should reply
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-500">
+                {" "}instantly.
+              </span>
+            </h2>
+
+            <motion.p initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="text-white/40 text-sm md:text-lg leading-relaxed max-w-2xl mx-auto mb-12">
+              Deepin helps businesses answer faster, qualify leads automatically,
+              and turn conversations into real revenue 24 hours a day.
+            </motion.p>
+
+            <motion.div
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              className="relative inline-block group"
+            >
+              <div className="absolute inset-0 bg-purple-600 blur-[70px] opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
+
+              <button className="relative px-10 md:px-16 py-5 md:py-6 rounded-2xl bg-white text-black font-bold uppercase tracking-[0.2em] text-xs md:text-sm border border-white hover:border-purple-500 transition-all duration-300 shadow-[0_20px_80px_rgba(255,255,255,0.15)]">
+                Start Free Trial
+              </button>
+            </motion.div>
+
+            <div className="mt-10 flex flex-wrap justify-center gap-6 text-[11px] uppercase tracking-[0.2em] text-white/20">
+              <span>24/7 AI replies</span>
+              <span>Lead qualification</span>
+              <span>Instant automation</span>
+            </div>
+
           </motion.div>
         </div>
       </section>
