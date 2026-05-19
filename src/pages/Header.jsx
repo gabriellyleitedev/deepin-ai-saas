@@ -55,11 +55,13 @@ function Header() {
                     </nav>
 
                     <div className="flex items-center gap-3">
-                        <button className="hidden rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-sm font-medium text-slate-100 transition hover:bg-white/10 md:inline-flex duration-300 cursor-pointer">
-                            Sign In
-                        </button>
+                        <Link to="/login">
+                            <button className="hidden rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-sm font-medium text-slate-100 transition hover:bg-white/10 md:inline-flex duration-300 cursor-pointer">
+                                Sign In
+                            </button>
+                        </Link>
 
-                        <Link to="/plans" className="relative hidden overflow-hidden rounded-full bg-[#8b5cf6] px-12 py-2.5 text-sm font-bold text-white transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(139,92,246,0.6)] group md:inline-flex items-center justify-center">
+                        <Link to="/register" className="relative hidden overflow-hidden rounded-full bg-[#8b5cf6] px-12 py-2.5 text-sm font-bold text-white transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(139,92,246,0.6)] group md:inline-flex items-center justify-center">
                             <span className="relative z-10">See it in action</span>
                             <div className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
                         </Link>

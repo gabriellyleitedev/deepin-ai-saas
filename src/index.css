@@ -5,10 +5,22 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
+/* Customização da barra de rolagem global */
+::-webkit-scrollbar {
+  width: 8px; /* Deixa ela bem fininha */
 }
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+
+/* Fundo da barra */
+::-webkit-scrollbar-track {
+  background: #000000; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2e1065; 
+  border-radius: 9999px; 
+  border: 2px solid #000000; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8b5cf6;
 }

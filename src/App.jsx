@@ -9,35 +9,62 @@ import Pricing from "./pages/Pricing";
 import Footer from "./pages/Footer";
 import Plans from "./pages/Plans";
 import AboutUs from "./pages/AboutUs";
-import Contact from "./pages/Contact";
+
+// =========================================================
+// IMPORTANTE: Crie esses dois arquivos na sua pasta de páginas (ex: ./pages/Login.jsx)
+// Por enquanto, crie-os apenas com um texto simples dentro, ex: "Página de Login"
+// =========================================================
+import Login from "./pages/Login"; 
+import Register from "./pages/Register";
 
 function App() {
   return (
     <Router>
       <div className="bg-black min-h-screen text-white selection:bg-purple-500/30 overflow-x-hidden">
-        <Header />
-        <main className="relative w-full">
-          <Routes>
-            {/* Rota da Home*/}
-            <Route path="/" element={
-              <>
+        
+        <Routes>
+          {/* ROTAS COM DESIGN DA LANDING PAGE 
+            Criamos um truque aqui: colocamos o Header e Footer apenas nas páginas institucionais
+          */}
+          <Route path="/" element={
+            <>
+              <Header />
+              <main className="relative w-full">
                 <Hero />
                 <Features />
                 <Stats />
                 <ProductShowcase />
                 <Testimonials />
                 <Pricing />
-              </>
-            } />
+              </main>
+              <Footer />
+            </>
+          } />
 
-            <Route path="/plans" element={<Plans />} />
-            <Route path="/about" element={<AboutUs />} />
-  
-            {/* <Route path="/contact" element={<Contact />} /> */}
+          <Route path="/plans" element={
+            <>
+              <Header />
+              <main className="relative w-full"><Plans /></main>
+              <Footer />
+            </>
+          } />
 
-          </Routes>
-        </main>
-        <Footer />
+          <Route path="/about" element={
+            <>
+              <Header />
+              <main className="relative w-full"><AboutUs /></main>
+              <Footer />
+            </>
+          } />
+
+          {/* =========================================================
+              NOVAS ROTAS ISOLADAS (SEM HEADER E SEM FOOTER DA LANDING PAGE)
+             ========================================================= */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+
+        </Routes>
+
       </div>
     </Router>
   );
