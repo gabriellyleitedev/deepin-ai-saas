@@ -44,7 +44,7 @@ router.post('/register', async (req: Request, res: Response): Promise<any> => {
 // ==========================================
 // ROTA DE LOGIN (CRIANDO AGORA)
 // ==========================================
-router.post('/login', async (req: Request, res: Response): Promise<any> => {   // esse router login é o cerebro do login
+router.post('/login', async (req: Request, res: Response): Promise<any> => {   // esse router login é o cerebro de TODO o login
   try {
     const { email, password } = req.body;
 

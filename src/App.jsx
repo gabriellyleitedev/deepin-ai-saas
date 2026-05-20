@@ -10,22 +10,16 @@ import Footer from "./pages/Footer";
 import Plans from "./pages/Plans";
 import AboutUs from "./pages/AboutUs";
 
-// =========================================================
-// IMPORTANTE: Crie esses dois arquivos na sua pasta de páginas (ex: ./pages/Login.jsx)
-// Por enquanto, crie-os apenas com um texto simples dentro, ex: "Página de Login"
-// =========================================================
-import Login from "./pages/Login"; 
+import Login from "./pages/Login";
 import Register from "./pages/Register";
 
 function App() {
   return (
     <Router>
       <div className="bg-black min-h-screen text-white selection:bg-purple-500/30 overflow-x-hidden">
-        
+
         <Routes>
-          {/* ROTAS COM DESIGN DA LANDING PAGE 
-            Criamos um truque aqui: colocamos o Header e Footer apenas nas páginas institucionais
-          */}
+         
           <Route path="/" element={
             <>
               <Header />
@@ -57,9 +51,7 @@ function App() {
             </>
           } />
 
-          {/* =========================================================
-              NOVAS ROTAS ISOLADAS (SEM HEADER E SEM FOOTER DA LANDING PAGE)
-             ========================================================= */}
+          {/* ROTAS ISOLADAS (SEM HEADER E SEM FOOTER DA LANDING PAGE) */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 

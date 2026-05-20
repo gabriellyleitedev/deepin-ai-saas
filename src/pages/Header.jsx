@@ -61,7 +61,7 @@ function Header() {
                             </button>
                         </Link>
 
-                        <Link to="/register" className="relative hidden overflow-hidden rounded-full bg-[#8b5cf6] px-12 py-2.5 text-sm font-bold text-white transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(139,92,246,0.6)] group md:inline-flex items-center justify-center">
+                        <Link to="/register" className="relative hidden overflow-hidden rounded-full bg-[#8b5cf6] px-12 py-2.5 text-sm font-bold text-white transition-all duration-500 hover:scale-105 hover:bg-linear-to-r hover:from-[#8b5cf6] hover:via-slate-200 hover:to-[#d8b4fe] hover:text-purple-900 hover:shadow-[0_0_30px_rgba(139,92,246,0.6)] group cursor-pointer md:inline-flex items-center justify-center">
                             <span className="relative z-10">See it in action</span>
                             <div className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
                         </Link>

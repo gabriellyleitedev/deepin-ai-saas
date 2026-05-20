@@ -55,7 +55,7 @@ const Hero = () => {
                     </motion.h1>
 
                     <motion.p variants={itemVariants} className="text-md text-slate-400 max-w-xl leading-relaxed">
-                       Stop losing clients because you reply too late. Deepin AI automatically responds to your leads in seconds, so you never miss a sale again.
+                        Stop losing clients because you reply too late. Deepin AI automatically responds to your leads in seconds, so you never miss a sale again.
                     </motion.p>
 
                     {/* Container dos Botões */}
