@@ -49,7 +49,7 @@ const Pricing = () => {
 
       {/* BACKGROUND TITLE */}
       <div className="absolute left-1/2 -translate-x-1/2 top-[15%] md:top-[25%] lg:top-[25%] w-full text-center pointer-events-none z-0">
-        <h2 className="text-[24vw] md:text-[10rem] lg:text-[16rem] font-black text-white/[0.09] uppercase tracking-tighter leading-none">
+        <h2 className="text-[24vw] md:text-[10rem] lg:text-[16rem] font-black text-white/9 uppercase tracking-tighter leading-none">
           Pricing
         </h2>
       </div>
@@ -125,7 +125,7 @@ const Pricing = () => {
 
                 {/* TOP GLOW */}
                 {isFocused && (
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent" />
+                  <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-purple-500 to-transparent" />
                 )}
 
                 {/* BADGE */}

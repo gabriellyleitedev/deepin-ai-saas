@@ -13,13 +13,15 @@ import AboutUs from "./pages/AboutUs";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
+import DashboardLayout from "./pages/dashboard/Layout";
+
 function App() {
   return (
     <Router>
       <div className="bg-black min-h-screen text-white selection:bg-purple-500/30 overflow-x-hidden">
 
         <Routes>
-         
+
           <Route path="/" element={
             <>
               <Header />
@@ -54,6 +56,8 @@ function App() {
           {/* ROTAS ISOLADAS (SEM HEADER E SEM FOOTER DA LANDING PAGE) */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+
+          <Route path="/dashboard" element={<DashboardLayout />} />
 
         </Routes>
 

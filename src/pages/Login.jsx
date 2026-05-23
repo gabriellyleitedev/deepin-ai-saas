@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-
 import { supabase } from '../supabaseClient';
 
 function Login() {
@@ -10,7 +9,7 @@ function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  // 1. FUNÇÃO PARA LOGIN TRADICIONAL
+  // 1. FUNÇÃO PARA LOGIN 
   const handleEmailLogin = async (e) => {
     e.preventDefault();
 
@@ -66,7 +65,7 @@ function Login() {
       {/* BOTÃO VOLTAR */}
       <button
         onClick={() => navigate(-1)}
-        className="absolute xl:hidden top-6 left-6 z-20 flex cursor-pointer items-center gap-2 text-sm font-medium text-slate-400 hover:text-white transition duration-300 bg-white/5 border border-white/5 rounded-xl px-3 py-2 backdrop-blur-md"
+        className="absolute xl:hidden top-3 left-6 z-20 flex cursor-pointer items-center gap-2 text-sm font-medium text-slate-400 hover:text-white transition duration-300 bg-white/5 border border-white/5 rounded-xl px-3 py-2 backdrop-blur-md"
       >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
           <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
@@ -75,8 +74,8 @@ function Login() {
       </button>
 
       {/* LUZES DE FUNDO PREMIUM */}
-      <div className="absolute top-[-150px] left-1/2 -translate-x-1/2 w-[600px] h-[450px] bg-gradient-to-b from-purple-600/35 to-indigo-600/5 blur-[100px] pointer-events-none rounded-full" />
-      <div className="absolute top-[-50px] left-1/2 -translate-x-1/2 w-[300px] h-[200px] bg-purple-500/25 blur-[60px] pointer-events-none rounded-full" />
+      <div className="absolute -top-37.5 left-1/2 -translate-x-1/2 w-150 h-112.5 bg-linear-to-b from-purple-600/35 to-indigo-600/5 blur-[100px] pointer-events-none rounded-full" />
+      <div className="absolute -top-12.5 left-1/2 -translate-x-1/2 w-75 h-50 bg-purple-500/25 blur-[60px] pointer-events-none rounded-full" />
 
       {/* CARD PRINCIPAL */}
       <div className="w-full max-w-md z-10 flex flex-col items-center">
@@ -84,7 +83,7 @@ function Login() {
           DEEPIN AI
         </div>
 
-        <div className="w-full rounded-2xl p-[1px] bg-gradient-to-b from-purple-500/30 via-white/5 to-white/0 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.8)]">
+        <div className="w-full rounded-2xl p-px bg-linear-to-b from-purple-500/30 via-white/5 to-white/0 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.8)]">
           <div className="relative w-full bg-[#090d16]/90 backdrop-blur-2xl rounded-2xl p-6 sm:p-8 overflow-hidden">
 
             <div

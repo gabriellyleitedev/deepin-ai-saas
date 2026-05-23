@@ -3,6 +3,7 @@ import { useState } from "react";
 import Globe from "../components/Globe";
 import DotGridBackground from "../components/DotGridBackground";
 import ScrollIndicator from "../components/ScrollIndicator";
+import { useNavigate } from "react-router-dom";
 
 const containerVariants = {
     hidden: { opacity: 0 },
@@ -26,6 +27,8 @@ const itemVariants = {
 };
 
 const Hero = () => {
+    const navigate = useNavigate();
+
     return (
         <section className="relative min-h-screen flex items-center overflow-hidden pt-36 pb-32">
             <DotGridBackground />
@@ -65,6 +68,7 @@ const Hero = () => {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             className="px-8 py-4 border hover:border-purple-500 bg-white text-black font-bold rounded-xl shadow-[0_0_20px_rgba(168,85,247,0.4)] cursor-pointer transition duration-300"
+                            onClick={() => navigate('/register')}
                         >
                             Start replying instantly
                         </motion.button>

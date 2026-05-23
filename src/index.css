@@ -5,22 +5,32 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
-/* Customização da barra de rolagem global */
-::-webkit-scrollbar {
-  width: 8px; 
+/* 1. Remove qualquer barra duplicada */
+html {
+  scrollbar-width: thin; /* Firefox */
 }
 
-/* Fundo da barra */
+/* 2. Configura a largura da barra apenas no nível global */
+::-webkit-scrollbar {
+  width: 0px;
+  height: 8px; 
+}
+
+/* 3. Força o fundo da linha comprida (Track) a ficar TOTALMENTE INVISÍVEL */
 ::-webkit-scrollbar-track {
-  background: #000000; 
+  background: #000000 !important; 
+  background-color: transparent !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2e1065; 
+  background: transparent !important; 
   border-radius: 9999px; 
   border: 2px solid #000000; 
 }
 
+/* Hover no indicador */
 ::-webkit-scrollbar-thumb:hover {
-  background: #8b5cf6;
+  background: #000000 !important;
 }

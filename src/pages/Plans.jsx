@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Globe, Layers, ZapIcon, BarChart3, Lock } from 'lucide-react';
 import logoIcon from "../assets/logo.icon.png";
+import { Link } from 'react-router-dom';
 
 const Plans = () => {
   const [isYearly, setIsYearly] = useState(false);
@@ -94,8 +95,8 @@ const Plans = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2 }}
-          className="absolute left-1/2 -translate-x-1/2 top-[15%] md:top-[25%] lg:top-[25%] w-full text-center pointer-events-none z-0">
-          <h2 className="text-[24vw] md:text-[10rem] lg:text-[16rem] font-black text-white/[0.09] uppercase tracking-tighter leading-none">
+          className="absolute left-1/2 -translate-x-1/2 top-[18%] md:top-[25%] lg:top-[25%] w-full text-center pointer-events-none z-0">
+          <h2 className="text-[24vw] md:text-[10rem] lg:text-[16rem] font-black text-white/9 uppercase tracking-tighter leading-none">
             Pricing
           </h2>
         </motion.div>
@@ -142,10 +143,10 @@ const Plans = () => {
                 onClick={() => setActivePlan(i)}
                 variants={revealVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
                 transition={{ delay: i * 0.1 }}
-                className={`relative flex flex-col w-full max-w-md md:max-w-none p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] border cursor-pointer transition-all duration-500 ${activePlan === i ? 'bg-white/[0.08] border-purple-500/50 shadow-[0_0_50px_rgba(168,85,247,0.15)] md:scale-105 z-30' : 'bg-white/2 border-white/10 opacity-60 md:scale-95 z-10 hover:border-white/30'
+                className={`relative flex flex-col w-full max-w-md md:max-w-none p-6 md:p-8 rounded-4xl md:rounded-[2.5rem] border cursor-pointer transition-all duration-500 ${activePlan === i ? 'bg-white/8 border-purple-500/50 shadow-[0_0_50px_rgba(168,85,247,0.15)] md:scale-105 z-30' : 'bg-white/2 border-white/10 opacity-60 md:scale-95 z-10 hover:border-white/30'
                   } backdrop-blur-md`}
               >
-                {activePlan === i && <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent" />}
+                {activePlan === i && <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-purple-500 to-transparent" />}
                 {plan.highlight && <div className="mb-4 md:mb-6 self-start bg-purple-500 text-white text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest">Best Choice</div>}
 
                 <div className="mb-6 md:mb-8">
@@ -195,7 +196,7 @@ const Plans = () => {
             {coreFeatures.map((item, idx) => (
               <motion.div
                 key={idx} variants={revealVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: idx * 0.1 }}
-                className="p-8 md:p-5 rounded-[2rem] bg-black border border-white/10 hover:border-purple-500/50 transition-all group"
+                className="p-8 md:p-5 rounded-4xl bg-black border border-white/10 hover:border-purple-500/50 transition-all group"
               >
                 <div className="text-purple-500 mb-6 group-hover:scale-110 transition-transform duration-700">{item.icon}</div>
                 <h4 className="text-lg md:text-xl font-bold mb-3 ">{item.title}</h4>
@@ -214,15 +215,15 @@ const Plans = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }} className="flex flex-col items-center mb-12 md:mb-20 text-center">
 
-            {logoIcon && <img src={logoIcon} className="max-w-[200px] md:max-w-[350px] mb-4 w-auto object-contain drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]" alt="Logo" />}
+            {logoIcon && <img src={logoIcon} className="max-w-50 md:max-w-87.5 mb-4 w-auto object-contain drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]" alt="Logo" />}
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter"> Built to scale with your business</h2>
           </motion.div>
 
           <motion.div
             variants={revealVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}
-            className="bg-white/[0.06] border border-white/10 rounded-[1.5rem] md:rounded-[3rem] overflow-x-auto md:overflow-hidden backdrop-blur-2xl"
+            className="bg-white/6er border-white/10 rounded-3xl md:rounded-[3rem] overflow-x-auto md:overflow-hidden backdrop-blur-2xl"
           >
-            <div className="min-w-[600px] md:min-w-full">
+            <div className="min-w-150 md:min-w-full">
               {[
                 {
                   label: "Active Conversations",
@@ -259,7 +260,7 @@ const Plans = () => {
                   v3: "Dedicated Manager"
                 }
               ].map((row, idx) => (
-                <div key={idx} className="grid grid-cols-4 p-6 md:p-10 border-t border-white/5 first:border-none group hover:bg-white/[0.03] transition-colors">
+                <div key={idx} className="grid grid-cols-4 p-6 md:p-10 border-t border-white/5 first:border-none group hover:bg-white/3 transition-colors">
                   <div className="text-xs md:text-sm font-bold text-white/80">{row.label}</div>
                   <div className="text-center text-xs md:text-sm text-white/30">{row.v1}</div>
                   <div className="text-center text-xs md:text-sm text-purple-400 font-bold">{row.v2}</div>
@@ -283,7 +284,7 @@ const Plans = () => {
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-12 md:mb-20 text-center tracking-tighter"
           >
             Questions before{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-500">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-indigo-500">
               you scale?
             </span>
           </motion.h2>
@@ -313,12 +314,12 @@ const Plans = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="group border border-white/10 bg-white/[0.06] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden backdrop-blur-xl"
+                className="group border border-white/10 bg-white/6 rounded-3xl md:rounded-4xl overflow-hidden backdrop-blur-xl"
               >
 
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full p-6 md:p-10 flex justify-between items-center text-left hover:bg-white/[0.03] transition-all duration-300"
+                  className="w-full p-6 md:p-10 flex justify-between items-center text-left hover:bg-white/3 transition-all duration-300"
                 >
 
                   <span className="font-bold text-sm md:text-lg">
@@ -377,7 +378,7 @@ const Plans = () => {
 
         {/* Background text */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
-          <h2 className="text-[22vw] md:text-[14rem] lg:text-[18rem] font-bold text-white/[0.03] tracking-tighter leading-none">
+          <h2 className="text-[22vw] md:text-[14rem] lg:text-[18rem] font-bold text-white/3 tracking-tighter leading-none">
             DEEPIN
           </h2>
         </div>
@@ -395,7 +396,7 @@ const Plans = () => {
               Your business
               <br />
               should reply
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-500">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-indigo-500">
                 {" "}instantly.
               </span>
             </h2>
@@ -412,9 +413,9 @@ const Plans = () => {
             >
               <div className="absolute inset-0 bg-purple-600 blur-[70px] opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
 
-              <button className="relative px-10 md:px-16 py-5 md:py-6 rounded-2xl bg-white text-black font-bold uppercase tracking-[0.2em] text-xs md:text-sm border border-white hover:border-purple-500 transition-all duration-300 shadow-[0_20px_80px_rgba(255,255,255,0.15)]">
+              <Link to="/register" className="relative px-10 md:px-16 py-5 md:py-6 rounded-2xl bg-white text-black font-bold uppercase tracking-[0.2em] text-xs md:text-sm border border-white hover:border-purple-500 transition-all duration-300 shadow-[0_20px_80px_rgba(255,255,255,0.15)]">
                 Start Free Trial
-              </button>
+              </Link>
             </motion.div>
 
             <div className="mt-10 flex flex-wrap justify-center gap-6 text-[11px] uppercase tracking-[0.2em] text-white/20">

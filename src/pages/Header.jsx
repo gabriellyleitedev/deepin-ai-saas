@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Link, useLocation } from 'react-router-dom'; // useLocation para efeitos ativos
+import { Link, useLocation, useNavigate } from 'react-router-dom'; // useLocation para efeitos ativos
 
 const navigation = [
     { name: 'Product', href: '/' },
     { name: 'Pricing', href: '/plans' },
     { name: 'Company', href: '/about' },
-   {/*  { name: 'Contact', href: '/contact' }, */}
+    {/*  { name: 'Contact', href: '/contact' }, */ }
 ]
 
 const animationVariants = {
@@ -17,6 +17,12 @@ const animationVariants = {
 function Header() {
     const [mobileOpen, setMobileOpen] = useState(false)
     const location = useLocation(); // Útil se quiser destacar o link da página atual
+    const navigate = useNavigate(); // Para navegação programática, se necessário
+
+    const handleMobileClick = (path) => {
+        setMobileOpen(false); // navegação mobile, fecha o menu
+        navigate(path);
+    }
 
     return (
         <motion.div
@@ -83,29 +89,36 @@ function Header() {
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
-                            className="mx-4 mb-4 overflow-hidden rounded-2xl border border-white/10 bg-black/90 p-4 backdrop-blur-2xl md:hidden"
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className="mx-4 mb-4 overflow-hidden rounded-2xl border border-white/10 bg-black/95 p-4 backdrop-blur-2xl md:hidden"
                         >
                             <div className="flex flex-col gap-2 mb-6">
                                 {navigation.map((item) => (
-                                    <Link
+                                    <button
                                         key={item.name}
-                                        to={item.href}
-                                        className="px-4 py-3 text-lg font-medium text-slate-300 border-b border-white/5 last:border-none transition"
-                                        onClick={() => setMobileOpen(false)} // Fecha o menu ao clicar
+                                        className={`w-full text-left px-4 py-3 text-lg font-medium border-b border-white/5 last:border-none transition ${location.pathname === item.href ? 'text-purple-400' : 'text-slate-300'
+                                            }`}
+                                        onClick={() => handleMobileClick(item.href)}
                                     >
                                         {item.name}
-                                    </Link>
+                                    </button>
                                 ))}
                             </div>
 
                             {/* Botões Mobile */}
                             <div className="flex flex-col gap-3">
-                                <Link to="/login" className="w-full py-4 text-center rounded-xl border border-white/10 bg-white/5 text-slate-100 font-bold text-sm">
+                                <button
+                                    onClick={() => handleMobileClick('/login')}
+                                    className="w-full py-4 text-center rounded-xl border border-white/10 bg-white/5 text-slate-100 font-bold text-sm cursor-pointer active:bg-white/10 transition"
+                                >
                                     Sign In
-                                </Link>
-                                <Link to="/plans" className="w-full py-4 text-center rounded-xl bg-[#8b5cf6] text-white font-bold text-sm shadow-[0_0_20px_rgba(139,92,246,0.3)]">
+                                </button>
+                                <button
+                                    onClick={() => handleMobileClick('/register')}
+                                    className="w-full py-4 text-center rounded-xl bg-[#8b5cf6] text-white font-bold text-sm shadow-[0_0_20px_rgba(139,92,246,0.3)] cursor-pointer active:scale-[0.99] transition"
+                                >
                                     See it in action
-                                </Link>
+                                </button>
                             </div>
                         </motion.div>
                     )}
