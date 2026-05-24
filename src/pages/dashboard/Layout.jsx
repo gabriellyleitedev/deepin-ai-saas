@@ -1,29 +1,57 @@
-import React, { useState } from "react";
-import Index from "./Index";
-import Automation from "./Automation";
+import React, { useState } from 'react';
+import Sidebar from './Sidebar';       
+import MobileDock from './MobileDock'; 
+import Automation from './Automation';
+import Overview from './Overview';
+import Connections from './Connections';
+import Chats from './Chats';
 
-export default function DashboardLayout() {
-  const [activeTab, setActiveTab] = useState("overview"); 
+export default function Layout({ children }) {
+  // Inicializa na aba correta
+  const [activeTab, setActiveTab] = useState('automation');
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case 'overview':
+        return <Overview />;
+      case 'connections':
+        return <Connections />;
+      case 'automation':
+        return <Automation />;
+      case 'chats':
+        return <Chats />;
+      default:
+        // Caso ocorra qualquer erro de digitação de ID, esse aviso vai salvar mostrando o nome real
+        return (
+          <div className="text-zinc-500 text-sm font-medium flex items-center justify-center h-full">
+            Aba ativa com erro de nome: "{activeTab}"
+          </div>
+        );
+    }
+  };
 
   return (
-    <div className="flex h-screen w-screen bg-[#09090b] text-white font-base overflow-hidden">
-
+    <div className="w-full h-screen bg-neutral-950 flex flex-col lg:flex-row text-zinc-300 font-sans overflow-hidden">
+      
       {/* SIDEBAR */}
-      <aside className="w-64 bg-[#0c0c0e] border-r border-zinc-800 flex flex-col justify-between">
-        <div>
-            <h2 className="text-2xl font-bold mb-8">SIDEBAR IN CONSTRUCTION</h2>
-        </div>
+      <div className="hidden lg:flex h-full">
+        <Sidebar 
+          activeTab={activeTab} 
+          setActiveTab={setActiveTab} 
+          isCollapsed={isCollapsed} 
+          setIsCollapsed={setIsCollapsed} 
+        />
+      </div>
 
-        {/* Footer da Sidebar */}
-        <div className="border-t border-zinc-800 pt-4 px-2 text-xs text-zinc-500">
-          © 2026 Deepin AI.
-        </div>
-      </aside>
-
-      <main className="flex-1 p-8 overflow-y-auto">
-        {activeTab === "overview" && <Index />}
-        {activeTab === "automation" && <Automation />}
+      {/* PAINEL PRINCIPAL */}
+      <main className="grow bg-white/80 lg:my-2 lg:mr-2 border border-white/3 rounded-none lg:rounded-3xl overflow-y-auto relative p-6 pb-32 lg:pb-8 transition-all duration-300">
+        {children || renderTabContent()}
       </main>
+
+      {/* MOBILE DOCK */}
+      <MobileDock activeTab={activeTab} setActiveTab={setActiveTab} />
+
     </div>
   );
 }

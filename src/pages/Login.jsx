@@ -62,7 +62,7 @@ function Login() {
   return (
     <div className="relative flex min-h-screen items-center justify-center bg-[#030712] px-4 overflow-hidden selection:bg-purple-500/30">
 
-      {/* BOTÃO VOLTAR */}
+      {/* BOTÃO VOLTAR 
       <button
         onClick={() => navigate(-1)}
         className="absolute xl:hidden top-3 left-6 z-20 flex cursor-pointer items-center gap-2 text-sm font-medium text-slate-400 hover:text-white transition duration-300 bg-white/5 border border-white/5 rounded-xl px-3 py-2 backdrop-blur-md"
@@ -72,6 +72,7 @@ function Login() {
         </svg>
         <span>Back</span>
       </button>
+      */}
 
       {/* LUZES DE FUNDO PREMIUM */}
       <div className="absolute -top-37.5 left-1/2 -translate-x-1/2 w-150 h-112.5 bg-linear-to-b from-purple-600/35 to-indigo-600/5 blur-[100px] pointer-events-none rounded-full" />
