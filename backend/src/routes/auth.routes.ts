@@ -53,7 +53,7 @@ router.post('/login', async (req: Request, res: Response): Promise<any> => {  //
       return res.status(400).json({ message: 'Email and password are required' });
     }
 
-    // 2. Busca o usuário pelo e-mail lá no banco da Neon
+    // 2. Busca o usuário pelo e-mail lá no banco da Neon (OU SUPABASE)
     const user = await prisma.user.findUnique({ where: { email } });
     if (!user) {
       return res.status(400).json({ message: 'Invalid email or password' });

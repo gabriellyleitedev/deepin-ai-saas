@@ -12,7 +12,7 @@ export default function Sidebar({ isCollapsed, setIsCollapsed, activeTab, setAct
     ];
 
     return (
-        <aside className={`h-full flex flex-col pt-8 pb-6 px-4 justify-between select-none shrink-0 bg-neutral-950 relative transition-all duration-300 ${isCollapsed ? 'w-20' : 'w-64'
+        <aside className={`h-full flex flex-col pt-8 pb-6 px-4 justify-between select-none shrink-0 bg-neutral-900 relative transition-all duration-300 ${isCollapsed ? 'w-20' : 'w-64'
             }`}>
 
             <div>
@@ -90,10 +90,6 @@ export default function Sidebar({ isCollapsed, setIsCollapsed, activeTab, setAct
                     </nav>
                 </div>
             </div>
-
-            {/* Efeito de Glow de Fundo preso pela propriedade relative da sidebar */}
-            <div className='pointer-events-none absolute top-0 left-0 w-full h-22 bg-linear-to-r from-purple-600/10 to-transparent blur-xl z-0'></div>
-            <div className='pointer-events-none absolute bottom-0 left-0 w-full h-22 bg-linear-to-r from-purple-600/10 to-transparent blur-xl z-0'></div>
 
             {/* RODAPÉ: CARD COM ANIMAÇÃO */}
             <div className="pt-4 border-t border-white/2 relative z-10">

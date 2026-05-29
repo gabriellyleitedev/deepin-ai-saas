@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import AiGlobe from "../../components/AiGlobe";
+import AiPlasmaGlobe from "../../assets/ai.plasma.png";
 
 export default function Automation() {
-  const [isResponding, setIsResponding] = useState(false);
+   const [isResponding, setIsResponding] = useState(false);
 
   // Mantém a função caso queira simular a pulsação do Globo clicando na tela ou em testes futuros
   const toggleGlobePulse = () => {
@@ -26,7 +26,7 @@ export default function Automation() {
         className="flex flex-col justify-center items-center cursor-pointer group"
         title="Clique para testar a pulsação do Orbe"
       >
-        <AiGlobe isResponding={isResponding} />
+        <AiPlasmaGlobe isResponding={isResponding} />
         
         {/* Subtexto minimalista do Globo */}
         <p className="text-zinc-600 text-[10px] tracking-[0.15em] font-mono uppercase mt-8 transition-colors group-hover:text-purple-400">
