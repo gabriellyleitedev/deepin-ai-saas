@@ -1,19 +1,7 @@
 import React, { useState } from 'react';
 import { MiniAreaChart, PerformancePieChart } from '../../components/DashboardCharts';
 import AiPlasmaGlobe from '../../components/AiPlasmaGlobe';
-import {
-  LayoutDashboard,
-  Settings,
-  Rocket,
-  ArrowUpRight,
-  ArrowDownRight,
-  ChevronDown,
-  ArrowRight,
-  User,
-  LogOut,
-  Sun,
-  Moon
-} from 'lucide-react';
+import { LayoutDashboard, Settings, Rocket, ArrowUpRight, ArrowDownRight, ChevronDown, ArrowRight, User, LogOut, Sun, Moon } from 'lucide-react';
 
 const runsPrimary = [4000, 3200, 4800, 3100, 4600, 3400, 5200, 4400];
 const runsSecondary = [3500, 3900, 3100, 4500, 3800, 4900, 4100, 4600];
@@ -63,13 +51,9 @@ export default function Overview({ isDarkMode, toggleTheme }) {
         .delay-card-3 { animation-delay: 450ms; opacity: 0; }
       `}</style>
 
-      {/* HEADER CONTRASTADO */}
-      <div
-        style={{ borderColor: isDarkMode ? 'rgba(39, 39, 42, 0.6)' : 'rgba(228, 228, 231, 0.8)' }}
-        className="w-full relative z-50 bg-transparent border-b border-white/10 animate-smooth-entry"
-      >
+      <div className="relative w-full flex flex-col">
         {/* DESKTOP HEADER */}
-        <div className="hidden md:flex items-center justify-between w-full py-3 px-6">
+        <div className="hidden md:flex items-center justify-between w-full pb-4 px-6">
           <div className="flex items-center gap-2">
             <div className="bg-purple-600/10 p-2 rounded-lg shrink-0 border border-purple-500/20">
               <LayoutDashboard size={24} className="text-purple-600" />
@@ -85,7 +69,6 @@ export default function Overview({ isDarkMode, toggleTheme }) {
           </div>
 
           <div className="flex items-center gap-6">
-
             {/* SWITCH TOGGLE */}
             <button
               onClick={toggleTheme}
@@ -99,16 +82,9 @@ export default function Overview({ isDarkMode, toggleTheme }) {
                   : 'inset 0 2px 4px rgba(0, 0, 0, 0.08)'
               }}
             >
-              {/* (Glow de Fundo) */}
+              <div className={`absolute inset-0 rounded-full transition-opacity duration-500 blur-md pointer-events-none ${isDarkMode ? 'bg-cyan-500/10 opacity-100' : 'bg-amber-500/10 opacity-0'}`} />
               <div
-                className={`absolute inset-0 rounded-full transition-opacity duration-500 blur-md pointer-events-none ${isDarkMode ? 'bg-cyan-500/10 opacity-100' : 'bg-amber-500/10 opacity-0'
-                  }`}
-              />
-
-              {/* BOTÃO DESLIZANTE (The Orbe) */}
-              <div
-                className={`relative w-7 h-7 rounded-full flex items-center justify-center transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) ${isDarkMode ? 'translate-x-7' : '-translate-x-1'
-                  }`}
+                className={`relative w-7 h-7 rounded-full flex items-center justify-center transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) ${isDarkMode ? 'translate-x-7' : '-translate-x-1'}`}
                 style={{
                   background: isDarkMode
                     ? 'radial-gradient(circle at 35% 35%, #1e1b4b 0%, #09090b 100%)'
@@ -119,27 +95,16 @@ export default function Overview({ isDarkMode, toggleTheme }) {
                   border: isDarkMode ? '1px solid rgba(6, 182, 212, 0.6)' : '1px solid rgba(245, 158, 11, 0.5)'
                 }}
               >
-                {/* Ícone único centralizado que se transforma de forma suave */}
                 <div className="relative w-full h-full flex items-center justify-center">
                   {isDarkMode ? (
-                    <Moon
-                      size={14}
-                      className="text-cyan-500 drop-shadow-[0_0_4px_rgba(34,211,238,0.6)] transition-all duration-500 rotate-0 scale-100"
-                      fill="currentColor"
-                    />
+                    <Moon size={14} className="text-cyan-500 drop-shadow-[0_0_4px_rgba(34,211,238,0.6)] transition-all duration-500 rotate-0 scale-100" fill="currentColor" />
                   ) : (
-                    <Sun
-                      size={14}
-                      className="text-amber-500 drop-shadow-[0_0_4px_rgba(245,158,11,0.6)] transition-all duration-500 rotate-90 scale-100"
-                      fill="currentColor"
-                    />
+                    <Sun size={14} className="text-amber-500 drop-shadow-[0_0_4px_rgba(245,158,11,0.6)] transition-all duration-500 rotate-90 scale-100" fill="currentColor" />
                   )}
                 </div>
-
-                {/* Reflexo Realista */}
-                <div className="absolute top-[1.5px] left-[2px] w-[5px] h-[2.5px] bg-white/50 rounded-full rotate-[-30deg] pointer-events-none" />
-              </div> 
-            </button> 
+                <div className="absolute top-[1.5px] left-0.5-[5px] h-[2.5px] bg-white/50 rounded-full rotate-[-30deg] pointer-events-none" />
+              </div>
+            </button>
 
             <div className="w-8 h-8 rounded-full overflow-hidden border border-zinc-300 dark:border-zinc-800 shadow-2xs shrink-0">
               <img src="https://github.com/gabriellyleitedev.png" alt="Perfil" className="w-full h-full object-cover" />
@@ -148,10 +113,10 @@ export default function Overview({ isDarkMode, toggleTheme }) {
         </div>
 
         {/* MOBILE HEADER */}
-        <div className="md:hidden flex items-center justify-between py-3 w-full">
+        <div className="md:hidden flex items-center fixed top-0 left-0 right-0 z-50 px-4 border-b border-zinc-200 dark:border-zinc-800 backdrop-blur bg-white/60 dark:bg-zinc-900/60 border-b-zinc-200 dark:border-b-zinc-800 justify-between py-3 w-full">
           <div className="flex items-center gap-2">
             <div className="bg-purple-600/10 p-1.5 rounded-lg">
-              <LayoutDashboard size={18} className="text-purple-600" />
+              <LayoutDashboard size={20} className="text-purple-600" />
             </div>
             <span style={{ color: isDarkMode ? '#ffffff' : '#09090b' }} className="text-md font-semibold tracking-tight">Overview</span>
           </div>
@@ -171,55 +136,93 @@ export default function Overview({ isDarkMode, toggleTheme }) {
             {isMenuOpen && (
               <div
                 style={{
-                  backgroundColor: isDarkMode ? '#09090b' : '#ffffff',
-                  borderColor: isDarkMode ? 'rgba(255, 255, 255, 0.06)' : 'rgba(24, 24, 27, 0.1)'
+                  borderColor: isDarkMode ? 'rgba(255, 255, 255, 0.08)' : 'rgba(24, 24, 27, 0.08)'
                 }}
-                className="absolute top-full right-0 mt-2 w-48 rounded-xl border shadow-xl p-1.5 z-50 flex flex-col gap-0.5"
+                className={`absolute top-full right-0 mt-2 w-48 rounded-xl border shadow-xl p-1.5 z-50 flex flex-col gap-0.5 backdrop-blur-md transition-all duration-300 ${isDarkMode ? 'bg-black/80' : 'bg-white/70'
+                  }`}
               >
-                <button style={{ color: isDarkMode ? '#d4d4d8' : '#27272a' }} className="w-full flex items-center gap-2.5 px-3 py-2 text-xs font-medium hover:bg-zinc-100 rounded-lg transition-colors">
-                  <User size={14} className="text-purple-600" /> Perfil
+                <button
+                  style={{ color: isDarkMode ? '#e4e4e7' : '#27272a' }}
+                  className={`w-full flex items-center gap-2.5 px-3 py-2 text-xs font-medium rounded-lg transition-colors ${isDarkMode ? 'hover:bg-white/5' : 'hover:bg-black/5'
+                    }`}
+                >
+                  <User size={14} className="text-purple-500" /> Perfil
                 </button>
-                <button style={{ color: isDarkMode ? '#d4d4d8' : '#27272a' }} className="w-full flex items-center gap-2.5 px-3 py-2 text-xs font-medium hover:bg-zinc-100 rounded-lg transition-colors">
-                  <Settings size={14} className="text-zinc-500" /> Settings
+
+                <button
+                  style={{ color: isDarkMode ? '#e4e4e7' : '#27272a' }}
+                  className={`w-full flex items-center gap-2.5 px-3 py-2 text-xs font-medium rounded-lg transition-colors ${isDarkMode ? 'hover:bg-white/5' : 'hover:bg-black/5'
+                    }`}
+                >
+                  <Settings size={14} className="text-zinc-400" /> Settings
                 </button>
+
+                {/* FILA DA INTERFACE COM TOGGLE PREMIUM */}
                 <div style={{ color: isDarkMode ? '#a1a1aa' : '#71717a' }} className="w-full flex items-center justify-between px-3 py-2 text-xs font-medium">
-                  <span className="flex items-center gap-2.5">
-                    {isDarkMode ? <Moon size={14} className="text-purple-400" /> : <Sun size={14} className="text-amber-500" />} Interface
+                  <span className="flex items-center gap-2.5 transition-colors duration-300">
+                    {isDarkMode ? (
+                      <Moon size={14} className="text-cyan-400 drop-shadow-[0_0_4px_rgba(34,211,238,0.5)] transition-transform duration-500 rotate-0" fill="currentColor" />
+                    ) : (
+                      <Sun size={14} className="text-amber-500 drop-shadow-[0_0_4px_rgba(245,158,11,0.5)] transition-transform duration-500 rotate-90" fill="currentColor" />
+                    )}
+                    Interface
                   </span>
-                  <button onClick={(e) => { e.stopPropagation(); toggleTheme(); }} className="relative w-12 h-6 bg-zinc-200 dark:bg-zinc-900 border border-zinc-300 rounded-full p-0.5">
-                    <div className={`absolute top-0.5 bottom-0.5 w-5 rounded-full bg-white dark:bg-zinc-800 border border-zinc-300 shadow-xs transition-transform duration-300 ease-in-out ${!isDarkMode ? 'translate-x-5' : 'translate-x-0'}`} />
+
+                  {/* SWITCH MICRO-TOGGLE */}
+                  <button
+                    onClick={(e) => { e.stopPropagation(); toggleTheme(); }}
+                    className={`relative w-10 h-5 border rounded-full p-0.5 transition-colors duration-300 outline-none ${isDarkMode ? 'bg-zinc-950/80 border-white/10' : 'bg-zinc-200 border-zinc-300'
+                      }`}
+                  >
+                    <div
+                      className={`w-3.5 h-3.5 rounded-full shadow-xs transition-all duration-500 ease-out ${isDarkMode
+                        ? 'translate-x-5 bg-cyan-400'
+                        : 'translate-x-0 bg-amber-500'
+                        }`}
+                    />
                   </button>
                 </div>
-                <div style={{ backgroundColor: isDarkMode ? 'rgba(255, 255, 255, 0.06)' : 'rgba(24, 24, 27, 0.06)' }} className="h-px my-1" />
-                <button className="w-full flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-red-600 rounded-lg transition-colors">
+
+                <div style={{ backgroundColor: isDarkMode ? 'rgba(255, 255, 255, 0.08)' : 'rgba(24, 24, 27, 0.08)' }} className="h-px my-1" />
+
+                <button className={`w-full flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-red-500 rounded-lg transition-colors ${isDarkMode ? 'hover:bg-red-500/10' : 'hover:bg-red-50/60'
+                  }`}>
                   <LogOut size={14} /> Sair
                 </button>
               </div>
             )}
           </div>
         </div>
+
+        {/* 3. A LINHA DIVISÓRIA FIXA */}
+        <div
+          style={{
+            borderColor: isDarkMode ? 'rgba(39, 39, 42, 0.4)' : 'rgba(228, 228, 231, 0.6)',
+            backgroundColor: isDarkMode ? '#121214' : '#ffffff'
+          }}
+          className="sticky top-0 z-40 -mx-6 border-b h-px w-[calc(100%+48px)]"
+        />
       </div>
 
       {/* ÁREA INTERNA DE CONTEÚDO */}
-      <div className="w-full pt-2 pb-0">
-        <div className="max-w-7xl mx-auto flex flex-col gap-4 w-full">
+      <div className="w-full md:pt-2 pt-20 pb-0">
+        <div className="max-w-350 mx-auto flex flex-col gap-4 w-full">
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
-            {/* CARD ESQUERDO DA IA (Adicionado eventos de mouse para interatividade com o plasma) */}
+            {/* CARD ESQUERDO DA IA */}
             <div
               style={cardStyle}
               onMouseEnter={() => setIsResponding(true)}
               onMouseLeave={() => setIsResponding(false)}
-              className="group lg:col-span-4 backdrop-blur-xl rounded-3xl p-6 flex flex-col justify-between items-center relative overflow-visible border shadow-sm transition-all duration-300 hover:border-purple-500/30 animate-smooth-entry delay-card-1"
+              className="group lg:col-span-4 backdrop-blur-xl rounded-3xl p-0 flex flex-col justify-between items-center relative overflow-visible border shadow-sm transition-all duration-300 hover:border-purple-500/30 animate-smooth-entry delay-card-1"
             >
               <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-100 h-32 bg-purple-600/10 rounded-full blur-[60px] pointer-events-none" />
 
-              {/* Container expandido para overflow-visible para o brilho fluir livremente */}
-              <div className="relative w-full flex-1 flex items-center justify-center min-h-40 overflow-visible">
+              <div className="relative w-full flex-1 flex items-center justify-center min-h-30 overflow-visible">
                 <AiPlasmaGlobe isResponding={isResponding} />
               </div>
 
-              <div className="text-center w-full z-10 mt-2">
+              <div className="text-center w-full z-10 -mt-4 pb-4">
                 <h2 style={{ color: isDarkMode ? '#ffffff' : '#09090b' }} className="text-base font-semibold tracking-tight mb-1.5">
                   Deepin AI Assistant Core
                 </h2>
@@ -243,7 +246,7 @@ export default function Overview({ isDarkMode, toggleTheme }) {
             >
               <div>
                 <div className="flex justify-between items-center mb-4">
-                  <h3 style={{ color: isDarkMode ? '#a1a1aa' : '#4b5563' }} className="text-[11px] font-semibold uppercase tracking-wider">Agent Activity</h3>
+                  <h3 style={{ color: isDarkMode ? '#a1a1aa' : '#4b5563' }} className="text-[12px] font-medium tracking-wider">Agent Activity</h3>
                   <span style={{ backgroundColor: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : '#f4f4f5', borderColor: isDarkMode ? 'rgba(255, 255, 255, 0.06)' : 'rgba(24, 24, 27, 0.08)', color: isDarkMode ? '#d4d4d8' : '#27272a' }} className="text-[10px] font-medium border px-2.5 py-1 rounded-lg flex items-center gap-1.5">
                     Today <span className="text-[8px] opacity-70">▼</span>
                   </span>

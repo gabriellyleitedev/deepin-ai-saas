@@ -36,7 +36,7 @@ export default function Sidebar({ isCollapsed, setIsCollapsed, activeTab, setAct
                 </div>
 
                 {/* linha divisória sutil */}
-                <div className="h-px mb-8 flex w-full bg-linear-to-r from-transparent via-white/15 to-transparent" />
+                <div className="h-px mb-8 -mt-1.5 flex w-full bg-linear-to-r from-transparent via-white/15 to-transparent" />
 
                 {/* SEÇÃO: MAIN MENU */}
                 <div className="mb-8">

@@ -1,6 +1,5 @@
 import React from 'react';
 
-// --- CORREÇÃO AQUI: Nome da função restaurado ---
 const computeMonotonePath = (points) => {
   if (points.length === 0) return "";
   if (points.length === 1) return `M ${points[0].x} ${points[0].y}`;
@@ -43,25 +42,25 @@ const computeMonotonePath = (points) => {
   return path;
 };
 
-// --- COMPONENTE DO GRÁFICO DE ÁREA ---
+// COMPONENTE DO GRÁFICO DE ÁREA 
 export function MiniAreaChart({ primaryPoints, secondaryPoints, gradientId, variant = 'blue' }) {
   const width = 260;
-  const height = 55;
-  const paddingY = 12;
+  const height = 75;
+  const paddingY = 2;
 
   const colorSchemes = {
     blue: {
-      stroke: "rgba(148, 163, 184, 0.7)", 
+      stroke: "rgba(148, 163, 184, 0.7)",
       area: "#64748b",
       dotFill: "#cbd5e1"
     },
     yellow: {
-      stroke: "rgba(175, 179, 155, 0.65)", 
+      stroke: "rgba(175, 179, 155, 0.65)",
       area: "#9a9e87",
       dotFill: "#e2e4d8"
     },
     green: {
-      stroke: "rgba(143, 163, 155, 0.65)", 
+      stroke: "rgba(143, 163, 155, 0.65)",
       area: "#738780",
       dotFill: "#d8e2de"
     }
@@ -83,7 +82,7 @@ export function MiniAreaChart({ primaryPoints, secondaryPoints, gradientId, vari
 
   const primaryLinePath = computeMonotonePath(pCoords);
   const secondaryLinePath = computeMonotonePath(sCoords);
-  
+
   const areaPath = `${primaryLinePath} L ${width} ${height} L 0 ${height} Z`;
 
   return (
@@ -96,11 +95,11 @@ export function MiniAreaChart({ primaryPoints, secondaryPoints, gradientId, vari
             <stop offset="100%" stopColor={colors.area} stopOpacity="0.0" />
           </linearGradient>
         </defs>
-        
+
         <path d={areaPath} fill={`url(#fumet-${gradientId})`} />
         <path d={secondaryLinePath} fill="none" stroke="#475569" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.2" />
         <path d={primaryLinePath} fill="none" stroke={colors.stroke} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        
+
         {sCoords.map((pt, idx) => (idx % 2 === 0) && (
           <circle key={`s-dot-${idx}`} cx={pt.x} cy={pt.y} r="1.2" fill="#475569" opacity="0.25" />
         ))}
@@ -113,7 +112,7 @@ export function MiniAreaChart({ primaryPoints, secondaryPoints, gradientId, vari
   );
 }
 
-// --- ADICIONADO: Componente que o seu Overview.jsx estava pedindo ---
+// Componente Overview.jsx estava pedindo 
 export function PerformancePieChart({ score }) {
   const radius = 34;
   const strokeWidth = 4.5;
@@ -123,12 +122,12 @@ export function PerformancePieChart({ score }) {
 
   return (
     <div className="flex justify-center items-center relative w-20 h-20 select-none">
-      <svg className="w-full h-full transform rotate-[135deg]" viewBox="0 0 90 90">
+      <svg className="w-full h-full transform rotate-135" viewBox="0 0 90 90">
         <circle cx="45" cy="45" r={radius} fill="none" stroke="rgba(255, 255, 255, 0.04)" strokeWidth={strokeWidth} strokeDasharray={`${arcLength} ${circumference - arcLength}`} strokeLinecap="round" />
         <circle cx="45" cy="45" r={radius} fill="none" stroke="#93c5fd" strokeWidth={strokeWidth} strokeDasharray={`${arcLength} ${circumference - arcLength}`} strokeDashoffset={strokeDashoffset} strokeLinecap="round" />
       </svg>
       <div className="absolute inset-0 flex items-center justify-center">
-        <span className="text-xl font-bold tracking-tight text-zinc-100">{score}</span>
+        <span className="text-xl font-semibold tracking-tight text-zinc-100">{score}</span>
       </div>
     </div>
   );
