@@ -8,8 +8,8 @@ export default function AiGlobe({ isResponding = false }) {
       <div 
         className={`absolute w-64 h-64 blur-[65px] rounded-full pointer-events-none transition-all cubic-bezier(0.16, 1, 0.3, 1) duration-1000 ${
           isResponding 
-            ? "scale-110 bg-gradient-to-tr from-cyan-500/30 via-fuchsia-500/25 to-purple-500/35 opacity-100" 
-            : "scale-95 bg-gradient-to-tr from-purple-600/15 via-indigo-500/5 to-transparent opacity-40 animate-pulse"
+            ? "scale-110 bg-linear-to-tr from-cyan-500/30 via-fuchsia-500/25 to-purple-500/35 opacity-100" 
+            : "scale-95 bg-linear-to-tr from-purple-600/15 via-indigo-500/5 to-transparent opacity-40 animate-pulse"
         }`} 
         style={{ animationDuration: '4s' }} 
       />
