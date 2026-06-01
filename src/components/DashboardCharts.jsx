@@ -10,11 +10,14 @@ const computeMonotonePath = (points) => {
   const ms = [];
 
   for (let i = 0; i < n - 1; i++) {
+    // 1. Ela calcula a distância deitada (dx) e em pé (dy) entre cada bolinha do gráfico.
     dx[i] = points[i + 1].x - points[i].x;
     dy[i] = points[i + 1].y - points[i].y;
     ms[i] = dy[i] / (dx[i] || 1);
   }
 
+  // 2. Ela acha a inclinação (tangents) perfeita para a curva passar exatamente por dentro da bolinha...
+  // ...sem fazer curvas bizarras para cima ou para baixo do valor real.
   const tangents = [ms[0]];
   for (let i = 1; i < n - 1; i++) {
     const m = ms[i - 1];
@@ -37,13 +40,14 @@ const computeMonotonePath = (points) => {
     const cpX2 = p1.x - dx[i] / 3;
     const cpY2 = p1.y - (dx[i] * tangents[i + 1]) / 3;
 
+    // 3. Ela monta o comando "C" (Cubic Bézier) que o navegador entende para desenhar vetores (SVG).
     path += ` C ${cpX1} ${cpY1}, ${cpX2} ${cpY2}, ${p1.x} ${p1.y}`;
   }
   return path;
 };
 
 // COMPONENTE DO GRÁFICO DE ÁREA 
-export function MiniAreaChart({ primaryPoints = [], secondaryPoints = [], gradientId, variant = 'white' }) {
+export function MiniAreaChart({ primaryPoints = [], secondaryPoints = [], gradientId, variant = 'white', isDarkMode }) {
   const width = 260;
   const height = 75;
   const paddingY = 2;
@@ -230,6 +234,10 @@ export function MiniAreaChart({ primaryPoints = [], secondaryPoints = [], gradie
             strokeWidth="0.75"
             strokeDasharray="2 2"
             opacity="0.3"
+
+            style={{
+              filter: isDarkMode ? `drop-shadow(0px 2px 6px ${colors.stroke}66)` : 'none'
+            }}
           />
         )}
 

@@ -37,13 +37,13 @@ export default function Overview({ isDarkMode, toggleTheme }) {
 
       <div className="relative w-full flex flex-col">
         {/* DESKTOP HEADER */}
-        <div className="hidden md:flex items-center justify-between w-full pb-3 px-6">
+        <div className="hidden md:flex items-center justify-between w-full pb-2 px-6">
           <div className="flex items-center gap-2">
             <div className="bg-purple-600/10 p-2 rounded-lg shrink-0 border border-purple-500/20">
               <LayoutDashboard size={24} className="text-purple-600" />
             </div>
             <div className="flex flex-col">
-              <h1 style={{ color: isDarkMode ? '#ffffff' : '#09090b' }} className="text-2xl font-medium tracking-tight leading-none">
+              <h1 style={{ color: isDarkMode ? '#ffffff' : '#09090b' }} className="text-2xl font-semibold tracking-tight leading-none">
                 Dashboard Overview
               </h1>
               <p style={{ color: isDarkMode ? '#a1a1aa' : '#71717a' }} className="text-xs mt-1">
@@ -177,7 +177,7 @@ export default function Overview({ isDarkMode, toggleTheme }) {
                   <div style={miniCardStyle} className="border rounded-2xl p-4 flex flex-col justify-between">
                     <div>
                       <p style={{ color: isDarkMode ? '#a1a1aa' : '#71717a' }} className="text-[11px] font-semibold">Messages Processed</p>
-                      <MiniAreaChart primaryPoints={runsPrimary} variant="purple" gradientId="gr-msg" />
+                      <MiniAreaChart primaryPoints={runsPrimary} variant="purple" gradientId="gr-msg" isDarkMode={isDarkMode} />
                     </div>
                     <h4 style={{ color: isDarkMode ? '#ffffff' : '#09090b' }} className="text-xl font-bold tracking-tight mt-2">8,835</h4>
                   </div>
@@ -185,7 +185,7 @@ export default function Overview({ isDarkMode, toggleTheme }) {
                   <div style={miniCardStyle} className="border rounded-2xl p-4 flex flex-col justify-between">
                     <div>
                       <p style={{ color: isDarkMode ? '#a1a1aa' : '#71717a' }} className="text-[11px] font-semibold">Avg Response Time</p>
-                      <MiniAreaChart primaryPoints={timePrimary} variant="green" gradientId="gr-time" />
+                      <MiniAreaChart primaryPoints={timePrimary} variant="green" gradientId="gr-time" isDarkMode={isDarkMode} />
                     </div>
                     <h4 style={{ color: isDarkMode ? '#ffffff' : '#09090b' }} className="text-xl font-bold tracking-tight mt-2">18s</h4>
                   </div>
@@ -193,7 +193,7 @@ export default function Overview({ isDarkMode, toggleTheme }) {
                   <div style={miniCardStyle} className="border rounded-2xl p-4 flex flex-col justify-between">
                     <div>
                       <p style={{ color: isDarkMode ? '#a1a1aa' : '#71717a' }} className="text-[11px] font-semibold">Active Conversations</p>
-                      <MiniAreaChart primaryPoints={jobsPrimary} variant="white" gradientId="gr-conv" />
+                      <MiniAreaChart primaryPoints={jobsPrimary} variant="white" gradientId="gr-conv" isDarkMode={isDarkMode} />
                     </div>
                     <h4 style={{ color: isDarkMode ? '#ffffff' : '#09090b' }} className="text-xl font-bold tracking-tight mt-2">850</h4>
                   </div>
@@ -205,7 +205,7 @@ export default function Overview({ isDarkMode, toggleTheme }) {
                   <div className="flex items-center gap-2.5">
                     <Settings className="w-3.5 h-3.5 text-zinc-400" />
                     <div>
-                      <p style={{ color: isDarkMode ? '#71717a' : '#a1a1aa' }} className="text-[10px] font-medium">Weekly AI Loops</p>
+                      <p style={{ color: isDarkMode ? '#71717a' : '#a1a1aa' }} className="text-xs font-medium">Weekly AI Loops</p>
                       <p style={{ color: isDarkMode ? '#d4d4d8' : '#27272a' }} className="text-xs font-semibold">56 deployments</p>
                     </div>
                   </div>
@@ -218,7 +218,7 @@ export default function Overview({ isDarkMode, toggleTheme }) {
                   <div className="flex items-center gap-2.5">
                     <Rocket className="w-3.5 h-3.5 text-zinc-400" />
                     <div>
-                      <p style={{ color: isDarkMode ? '#71717a' : '#a1a1aa' }} className="text-[10px] font-medium">Total Syncs Completed</p>
+                      <p style={{ color: isDarkMode ? '#71717a' : '#a1a1aa' }} className="text-xs font-medium">Total Syncs Completed</p>
                       <p style={{ color: isDarkMode ? '#d4d4d8' : '#27272a' }} className="text-xs font-semibold">236 executions</p>
                     </div>
                   </div>
@@ -288,8 +288,8 @@ export default function Overview({ isDarkMode, toggleTheme }) {
               <div style={cardStyle} className="backdrop-blur-xl rounded-3xl p-4 border flex items-center justify-between min-h-24 max-h-24 shadow-sm">
                 <div className="flex flex-col justify-between h-full py-0.5">
                   <div>
-                    <h4 style={{ color: isDarkMode ? '#d4d4d8' : '#27272a' }} className="text-xs font-semibold">AI Accuracy</h4>
-                    <p style={{ color: isDarkMode ? '#71717a' : '#a1a1aa' }} className="text-[10px] mt-0.5">Optimized and running smoothly</p>
+                    <h4 style={{ color: isDarkMode ? '#d4d4d8' : '#27272a' }} className="text-base font-semibold">AI Accuracy</h4>
+                    <p style={{ color: isDarkMode ? '#71717a' : '#a1a1aa' }} className="text-xs mt-0.5">Optimized and running smoothly</p>
                   </div>
                 </div>
                 <PerformancePieChart score="92%" />
@@ -303,7 +303,7 @@ export default function Overview({ isDarkMode, toggleTheme }) {
                 <div style={{ backgroundColor: isDarkMode ? '#27272a' : '#e4e4e7' }} className="w-full h-1 rounded-full overflow-hidden my-2">
                   <div className="bg-purple-600 h-full rounded-full" style={{ width: '80%' }} />
                 </div>
-                <div style={{ color: isDarkMode ? '#71717a' : '#a1a1aa' }} className="flex justify-between text-[9px] font-medium">
+                <div style={{ color: isDarkMode ? '#71717a' : '#a1a1aa' }} className="flex justify-between text-[11px] font-medium">
                   <span>Code Freeze</span>
                   <span>Production</span>
                 </div>

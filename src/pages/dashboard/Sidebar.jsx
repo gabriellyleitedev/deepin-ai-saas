@@ -17,7 +17,7 @@ export default function Sidebar({ isCollapsed, setIsCollapsed, activeTab, setAct
 
             <div>
                 {/* TOPO: LOGO DA DEEPIN AI + BOTÃO DA SETA */}
-                <div className={`flex items-center px-3 mb-8 -mt-2 ${isCollapsed ? 'justify-center' : 'justify-between'}`}>
+                <div className={`flex items-center px-3 mb-6 -mt-2 ${isCollapsed ? 'justify-center' : 'justify-between'}`}>
 
                     {/* Só mostra o texto da logo se NÃO estiver colapsada */}
                     {!isCollapsed && (
@@ -43,12 +43,12 @@ export default function Sidebar({ isCollapsed, setIsCollapsed, activeTab, setAct
 
                     {/* Só mostra o título se NÃO estiver colapsada */}
                     {!isCollapsed && (
-                        <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-zinc-600 mb-3 px-3">
+                        <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-zinc-600 mb-2 px-2">
                             Main Menu
                         </p>
                     )}
 
-                    <nav className="space-y-1">
+                    <nav className="space-y-0">
 
                         {menuItems.map((item) => {
                             const isActive = activeTab === item.id;
@@ -62,12 +62,12 @@ export default function Sidebar({ isCollapsed, setIsCollapsed, activeTab, setAct
                                             ? 'bg-linear-to-r from-white/4 to-transparent text-white'
                                             : 'text-zinc-500 hover:text-zinc-300 hover:bg-white/1'
                                         }`}
-                                    style={isActive ? { borderLeft: '1px solid rgba(255, 255, 255, 0.35)', boxShadow: 'inset 4px 0 12px -2px rgba(168, 85, 247, 0.15)' } : {}}
+                                    style={isActive ? { borderLeft: '1px solid rgba(255, 255, 255, 0.45)', boxShadow: 'inset 4px 0 12px -2px rgba(168, 85, 247, 0.15)' } : {}}
                                 >
 
                                     {/* INDICADOR LATERAL ROXO NEON */}
                                     {isActive && (
-                                        <div className="absolute -left-3.5 top-1/2 -translate-y-1/2 w-1 h-8 bg-purple-500 rounded-r-full shadow-[4px_0_16px_#a855f7,8px_0_32px_rgba(168,85,247,0.9)]" />
+                                        <div className="absolute -left-3.5 top-1/2 -translate-y-1/2 w-1 h-8 bg-purple-500 rounded-r-full shadow-[4px_0_16px_#a855f7,8px_0_32px_rgba(168,85,247,0.9)] bg-linear-to-r brightness-75 saturate-150 drop-shadow-[2px_0_8px_rgba(168,85,247,0.9)]" />
                                     )}
 
                                     <div className="flex items-center gap-3">

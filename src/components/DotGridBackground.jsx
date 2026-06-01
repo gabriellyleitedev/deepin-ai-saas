@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
 
-export default function DotGridBackground() {
+export default function DotGridBackground({ fixedPos }) {
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
+        if (fixedPos) {
+            setMousePos({ x: fixedPos.x, y: fixedPos.y });
+            return; // Não adiciona o listener se a posição for fixa
+        }
         const handleMouseMove = (e) => {
             setMousePos({ x: e.clientX, y: e.clientY });
         };
         window.addEventListener("mousemove", handleMouseMove);
         return () => window.removeEventListener("mousemove", handleMouseMove);
-    }, []);
+    }, [fixedPos]);
 
     return (
         <div className="absolute -top-3 inset-x-0 bottom-0 bg-black pointer-events-none ">

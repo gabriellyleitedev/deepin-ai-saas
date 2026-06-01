@@ -5,6 +5,7 @@ import Automation from './Automation';
 import Overview from './Overview';
 import Connections from './Connections';
 import Chats from './Chats';
+import DotGridBackground from '../../components/DotGridBackground';
 
 export default function Layout({ children }) {
   const [activeTab, setActiveTab] = useState('overview');
@@ -58,13 +59,14 @@ export default function Layout({ children }) {
       {/* CENTRAL */}
       <main
         style={{
-          backgroundColor: isDarkMode ? '#0d0e12' : '#f8f9fa',
+          backgroundColor: isDarkMode ? '#0b0b0f' : '#f8f9fa',
           color: isDarkMode ? '#f4f4f5' : '#18181b',
           borderColor: isDarkMode ? 'rgba(255, 255, 255, 0.10)' : 'rgba(24, 24, 27, 0.08)'
         }}
 
         className="flex-1 min-w-0 h-full relative lg:h-[calc(100vh-12px)] rounded-2xl lg:my-1.5 lg:mr-1.5  overflow-y-auto p-4 lg:p-4 pb-24 lg:pb-5 transition-colors duration-300 shadow-2xl"
       >
+
         {children
           ? React.Children.map(children, child =>
             React.isValidElement(child)

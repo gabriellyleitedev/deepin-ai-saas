@@ -137,7 +137,7 @@ export default function Globe() {
                 WebkitMaskImage: 'radial-gradient(circle, black 60%, transparent 95%)'
             }}
         >
-            <div className="absolute inset-0 bg-purple-500/20 opacity-50 rounded-full blur-[80px] scale-70"></div>
+            <div className="absolute inset-0 bg-purple-500/20 opacity-50 rounded-full blur-[80px] scale-40"></div>
 
             <canvas
                 ref={canvasRef}

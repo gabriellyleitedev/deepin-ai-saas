@@ -33,11 +33,15 @@ export default function AiPlasmaGlobe({ isResponding = false }) {
               numOctaves="2"
               result="noise"
             >
+              {/* Importante:
+      o operador ternário no 'dur' para acelerar a animação quando responde,
+      e um 'repeatCount' condicional. Se 'isResponding' for falso, 
+      o repeatCount vira '0', o que desliga o loop de cálculo da CPU rapidamente */}
               <animate
                 attributeName="baseFrequency"
-                values={isResponding ? "0.018;0.025;0.018" : "0.009;0.011;0.009"}
-                dur={isResponding ? "5s" : "10s"}
-                repeatCount="indefinite"
+                values={isResponding ? "0.018;0.025;0.018" : "0.009;0.009;0.009"}
+                dur={isResponding ? "5s" : "1s"}
+                repeatCount={isResponding ? "indefinite" : "0"}
               />
             </feTurbulence>
             <feDisplacementMap
