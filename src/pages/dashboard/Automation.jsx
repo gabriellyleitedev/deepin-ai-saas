@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import AiPlasmaGlobe from "../../assets/ai.plasma.png";
 
 export default function Automation() {
    const [isResponding, setIsResponding] = useState(false);
@@ -26,7 +25,7 @@ export default function Automation() {
         className="flex flex-col justify-center items-center cursor-pointer group"
         title="Clique para testar a pulsação do Orbe"
       >
-        <AiPlasmaGlobe isResponding={isResponding} />
+       
         
         {/* Subtexto minimalista do Globo */}
         <p className="text-zinc-600 text-[10px] tracking-[0.15em] font-mono uppercase mt-8 transition-colors group-hover:text-purple-400">

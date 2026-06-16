@@ -1,86 +1,64 @@
-import React, { useState, useEffect } from 'react';
-import Sidebar from './Sidebar';
-import MobileDock from './MobileDock';
-import Automation from './Automation';
+import React, { useState } from 'react';
 import Overview from './Overview';
 import Connections from './Connections';
+import Automation from './Automation';
 import Chats from './Chats';
-import DotGridBackground from '../../components/DotGridBackground';
+import Settings from './Settings';
+import Sidebar from './Navbar'; 
+import MobileDock from '../../components/MobileDock';
+import MobileHeader from '../../components/MobileHeader';
 
-export default function Layout({ children }) {
+export default function Layout() {
   const [activeTab, setActiveTab] = useState('overview');
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(true);
 
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDarkMode]);
-
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
+  const handleTabChange = (tabName) => {
+    setActiveTab(tabName);
   };
+
+  const navigateTo = (nextTab) => {
+  if (nextTab !== activeTab) {
+    setHistory(prev => [...prev, activeTab]);
+    setActiveTab(nextTab);
+  }
+};
+
+const navigateBack = () => {
+  if (history.length > 0) {
+    const previousTab = history[history.length - 1];
+    setHistory(prev => prev.slice(0, -1));
+    setActiveTab(previousTab);
+  }
+};
 
   const renderTabContent = () => {
     switch (activeTab) {
-      case 'overview':
-        return <Overview isDarkMode={isDarkMode} toggleTheme={toggleTheme} />;
-      case 'connections':
-        return <Connections isDarkMode={isDarkMode} />;
-      case 'automation':
-        return <Automation isDarkMode={isDarkMode} />;
-      case 'chats':
-        return <Chats isDarkMode={isDarkMode} />;
-      default:
-        return (
-          <div className="text-zinc-500 text-sm font-medium flex items-center justify-center h-full">
-            Aba ativa com erro de nome: "{activeTab}"
-          </div>
-        );
+      case 'overview': return <Overview setActiveTab={setActiveTab} activeTab={activeTab} />;
+      case 'connections': return <Connections setActiveTab={setActiveTab} activeTab={activeTab} />;
+      case 'automation': return <Automation setActiveTab={setActiveTab} activeTab={activeTab} />;
+      case 'chats': return <Chats setActiveTab={setActiveTab} activeTab={activeTab} />;
+      case 'settings': return <Settings setActiveTab={setActiveTab} activeTab={activeTab} />;
+      default: return <Overview setActiveTab={setActiveTab} activeTab={activeTab} />;
     }
   };
 
   return (
-    <div className="w-full h-screen bg-neutral-900 flex flex-col lg:flex-row text-zinc-300 font-sans overflow-hidden">
+    // CONTAINER PRINCIPAL: Ocupa 100% da tela
+    <div className="w-full min-h-screen bg-[#141923] flex flex-col antialiased font-sans text-white select-none">
+      
+    <MobileHeader />
 
-      {/* SIDEBAR */}
-      <div className="hidden lg:flex h-full shrink-0">
-        <Sidebar
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-          isCollapsed={isCollapsed}
-          setIsCollapsed={setIsCollapsed}
-        />
-      </div>
+      {/* BARRA DE NAVEGAÇÃO SUPERIOR: Alinhada ao topo */}
+      <header className="w-full bg-[#141923] border-b border-white/4">
+        <Sidebar activeTab={activeTab} setActiveTab={handleTabChange} />
+        
+      </header>
 
-      {/* CENTRAL */}
-      <main
-        style={{
-          backgroundColor: isDarkMode ? '#0b0b0f' : '#f8f9fa',
-          color: isDarkMode ? '#f4f4f5' : '#18181b',
-          borderColor: isDarkMode ? 'rgba(255, 255, 255, 0.10)' : 'rgba(24, 24, 27, 0.08)'
-        }}
-
-        className="flex-1 min-w-0 h-full relative lg:h-[calc(100vh-12px)] rounded-2xl lg:my-1.5 lg:mr-1.5  overflow-y-auto p-4 lg:p-4 pb-24 lg:pb-5 transition-colors duration-300 shadow-2xl"
-      >
-
-        {children
-          ? React.Children.map(children, child =>
-            React.isValidElement(child)
-              ? React.cloneElement(child, { isDarkMode, toggleTheme })
-              : child
-          )
-          : renderTabContent()
-        }
+      {/* ÁREA DE CONTEÚDO DO DASHBOARD: Onde os cards reais da aplicação serão renderizados */}
+      <main className="flex-1 w-full p-6 pb-28 md:p-8 md:pb-8 overflow-y-auto bg-[#141923]">
+        <div className="max-w-400 mx-auto w-full">
+          {renderTabContent()}
+        </div>
       </main>
-
-      {/* MOBILE DOCK */}
-      <div className="lg:hidden shrink-0">
-        <MobileDock activeTab={activeTab} setActiveTab={setActiveTab} />
-      </div>
 
     </div>
   );

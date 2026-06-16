@@ -123,7 +123,7 @@ function Register() {
       {/* PAINEL ESQUERDO: */}
       <div className="hidden lg:flex w-[35%] bg-[#030712] backdrop-blur-md p-16 flex-col justify-between border-r border-white/4 relative z-10">
         <div>
-          <h2 className="text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-indigo-500">
+          <h2 className="text-3xl font-bold uppercase tracking-tight text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-indigo-500">
             Deepin AI
           </h2>
         </div>
