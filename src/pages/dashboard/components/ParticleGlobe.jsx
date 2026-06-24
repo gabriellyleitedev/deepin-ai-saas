@@ -243,7 +243,7 @@ export function ParticleGlobe() {
   const activeState = isClickTesting ? 'responding' : currentState;
 
   return (
-    <div className="relative w-full bg-black rounded-2xl overflow-hidden border border-slate-950 shadow-2xl flex flex-col items-center">
+    <div className="relative w-full shadow-2xl flex flex-col  bg-black rounded-2xl overflow-hidden border border-slate-950  items-center">
       
       <div 
         className="relative w-full h-115 cursor-grab active:cursor-grabbing select-none"
@@ -256,7 +256,7 @@ export function ParticleGlobe() {
       </div>
 
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 text-[10px] font-mono tracking-wider px-4 py-1.5 rounded-md bg-slate-950/90 border border-slate-900 text-slate-400 pointer-events-none">
-          {isClickTesting ? "⚙️ SIMULANDO REPRODUÇÃO DE ÁUDIO" : "🖥️ CLIQUE NO GLOBO PARA FALAR"}
+          {isClickTesting ? "SIMULANDO REPRODUÇÃO DE ÁUDIO" : "CLIQUE NO GLOBO PARA FALAR"}
         </div>
 
         <Canvas camera={{ position: [0, 0, 5.5], fov: 55 }}>
@@ -279,7 +279,7 @@ export function ParticleGlobe() {
               : 'bg-slate-900 text-slate-400 border-transparent hover:bg-slate-800'
           }`}
         >
-          🟢 PRODUTO PADRÃO (VERDE)
+          PRODUTO PADRÃO (VERDE)
       </button>
 
         <button
@@ -290,7 +290,7 @@ export function ParticleGlobe() {
               : 'bg-slate-900 text-slate-400 border-transparent hover:bg-slate-800'
           }`}
         >
-          🚨 MODO ALERTA (LARANJA CINEMA)
+          MODO ALERTA
         </button>
       </div>
 
