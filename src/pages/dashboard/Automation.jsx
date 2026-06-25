@@ -13,10 +13,9 @@ export default function Automation() {
   };
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center text-zinc-300 font-sans select-none antialiased relative">
-      
-        <ParticleGlobe isTesting={isResponding} />
 
+    <div className="w-full h-full flex flex-col items-center justify-center text-zinc-300 font-sans select-none antialiased relative">
+        <ParticleGlobe isResponding={isResponding} />
       <div 
         onClick={toggleGlobePulse} 
         className="flex flex-col justify-center items-center cursor-pointer group"
@@ -30,5 +29,6 @@ export default function Automation() {
       </div>
 
     </div>
+   
   );
 }

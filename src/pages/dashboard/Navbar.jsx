@@ -1,106 +1,53 @@
 import React from 'react';
-import { Home, Zap, MessageSquare, Mic, Settings, FileText, History, HelpCircle, Bell, Plus } from 'lucide-react';
+import { Home, Zap, MessageSquare, Mic, Settings } from 'lucide-react';
 import MobileDock from './components/MobileDock';
 
 export default function Sidebar({ activeTab, setActiveTab }) {
     const navItems = [
-        { name: 'Visão Geral', value: 'overview', icon: <Home size={18} strokeWidth={2} /> },
-        { name: 'Automação', value: 'automation', icon: <Zap size={18} strokeWidth={2} /> },
-        { name: 'Conversas', value: 'chats', icon: <MessageSquare size={18} strokeWidth={2} /> },
-        { name: 'Conexões', value: 'connections', icon: <Mic size={18} strokeWidth={2} /> },
-        { name: 'Configurações', value: 'settings', icon: <Settings size={18} strokeWidth={2} /> },
-    ];
-
-    const secondaryIcons = [
-        <FileText size={14} strokeWidth={1.8} />,
-        <History size={14} strokeWidth={1.8} />,
-        <HelpCircle size={14} strokeWidth={1.8} />
+        { name: 'Visão Geral', value: 'overview', icon: <Home size={20} strokeWidth={2} /> },
+        { name: 'Automação', value: 'automation', icon: <Zap size={20} strokeWidth={2} /> },
+        { name: 'Conversas', value: 'chats', icon: <MessageSquare size={20} strokeWidth={2} /> },
+        { name: 'Conexões', value: 'connections', icon: <Mic size={20} strokeWidth={2} /> },
+        { name: 'Configurações', value: 'settings', icon: <Settings size={20} strokeWidth={2} /> },
     ];
 
     return (
         <>
-            {/* CHAMA O COMPONENTE MOBILE */}
+            {/* COMPONENTE MOBILE */}
             <MobileDock navItems={navItems} activeTab={activeTab} setActiveTab={setActiveTab} />
 
-            {/* VERSÃO DESKTOP  */}
-            <nav className="hidden md:block relative bg-[#000000] text-white px-20 py-4 border-b border-white/4 w-full select-none z-40">
-                <div className='pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-full h-22 bg-linear-to-r from-transparent via-white/20 to-transparent blur-[60px] -rotate-12 '></div>
-
-                <div className="flex items-center justify-between w-full">
-                    <div className="flex items-center gap-3">
-                        <div className="flex items-center gap-0 cursor-pointer group">
-                        </div>
-                    </div>
-
-                    <div className="flex items-center gap-3">
-
-                        <div className="flex items-center bg-white rounded-full p-1 shadow-sm">
-                            {navItems.map((item, index) => {
+            {/* VERSÃO DESKTOP (BARRA LATERAL VERTICAL */}
+            <nav className="hidden md:flex fixed left-6 top-1/2 -translate-y-1/2 flex-col items-center bg-black/20 backdrop-blur-xl border border-white/30 rounded-full p-1 py-4 shadow-2xl z-50 transition-all duration-300">
+                <div className="flex flex-col items-center gap-4 relative">
+                    {navItems.map((item) => {
                         const isActive = activeTab === item.value;
 
-                                if (index === 0) {
                         return (
-                            <button
-                                key={item.value}
-                                            type="button"
-                                onClick={() => setActiveTab(item.value)}
-                                            className={`flex items-center justify-center w-10 h-10 rounded-full transition-all mr-2 ${isActive
-                                                ? 'bg-[#a3e635] text-black shadow-sm'
-                                                : 'bg-[#1a2333] text-gray-400 hover:text-white'
-                                }`}
-                            >
-                                {item.icon}
-                                        </button>
-                                    );
-                                }
+                            <div key={item.value} className="relative flex items-center group">
+                                {/* Botão do Ícone */}
+                                <button
+                                    type="button"
+                                    onClick={() => setActiveTab(item.value)}
+                                    className={`relative flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 z-10 ${isActive
+                                            ? 'bg-white text-black shadow-lg scale-105'
+                                            : 'bg-black/20 text-white/70 hover:text-white hover:bg-black/50'
+                                        }`}
+                                >
+                                    {item.icon}
+                                </button>
 
-                                return (
-                                    <button
-                                        key={item.value}
-                                        type="button"
-                                        onClick={() => setActiveTab(item.value)}
-                                        className={`flex items-center gap-1 px-4.5 py-1 rounded-full text-[11px] font-semibold tracking-wide h-8 transition-all ${isActive
-                                            ? 'bg-[#a3e635] text-black font-bold shadow-sm'
-                                            : 'text-[#475569] hover:text-[#0f172a] hover:bg-gray-100/70'
-                                            }`}
-                                    >
-                                        {isActive && <Plus size={11} strokeWidth={3} className="mr-0.5" />}
-                                <span>{item.name}</span>
-                            </button>
+                                {/* Tag com o Nome da Página (Aparece apenas na Ativa ou no Hover) */}
+                                <div
+                                    className={`absolute left-16 flex items-center bg-black text-white text-xs font-semibold px-4 py-2 rounded-full shadow-md whitespace-nowrap pointer-events-none transition-all duration-300 ${isActive
+                                            ? 'opacity-100 translate-x-0 scale-100'
+                                            : 'opacity-0 -translate-x-2 scale-95 group-hover:opacity-100 group-hover:translate-x-0 group-hover:scale-100 group-hover:bg-white/80 group-hover:text-black'
+                                        }`}
+                                >
+                                    {item.name}
+                                </div>
+                            </div>
                         );
                     })}
-                </div>
-
-                        <div className="hidden xl:flex items-center gap-1.5 pl-1">
-                            {secondaryIcons.map((icon, idx) => (
-                                <button key={idx} type="button" className="flex items-center justify-center w-7 h-7 rounded-full bg-white/2 border border-white/4 text-gray-400 hover:text-white hover:bg-white/6 transition-all">
-                                    {icon}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                        <div className="flex items-center gap-1.5 bg-white/2 p-1 rounded-full border border-white/4">
-                            <button type="button" className="flex items-center justify-center w-7 h-7 text-gray-400 hover:text-white hover:bg-white/6 rounded-full transition-all">
-                                <Bell size={14} />
-                            </button>
-                            <button type="button" className="flex items-center justify-center w-7 h-7 text-gray-400 hover:text-white hover:bg-white/6 rounded-full transition-all">
-                                <Settings size={14} />
-                            </button>
-                            <div className="w-7 h-7 rounded-full overflow-hidden flex items-center justify-center border border-white/10 cursor-pointer bg-gray-800">
-                                <img
-                                    src="https://github.com/gabriellyleitedev.png"
-                                    alt="Gabrielly Leite"
-                                    className="w-full h-full object-cover"
-                                    onError={(e) => {
-                                        e.target.onerror = null;
-                                        e.target.src = "https://api.dicebear.com/7.x/bottts/svg?seed=gabrielly";
-                                    }}
-                                />
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </nav>
         </>
