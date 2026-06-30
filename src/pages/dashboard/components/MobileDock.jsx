@@ -30,7 +30,7 @@ export default function MobileDock({ navItems, activeTab, setActiveTab }) {
             {/* PAINEL DE AÇÕES DEITADO (GRID HORIZONTAL COM TEXTO EMBAIXO) */}
             <div 
                 style={springTransition}
-                className={`pointer-events-auto w-full max-w-[360px] bg-white/90 backdrop-blur-xl border border-white/50 rounded-3xl p-4 shadow-[0_20px_50px_rgba(0,0,0,0.25)] transition-all duration-500 origin-bottom ${
+                className={`pointer-events-auto w-full max-w-90 bg-white/90 backdrop-blur-xl border border-white/50 rounded-3xl p-4 shadow-[0_20px_50px_rgba(0,0,0,0.25)] transition-all duration-500 origin-bottom ${
                     isOpen 
                         ? 'opacity-100 scale-100 translate-y-0' 
                         : 'opacity-0 scale-75 translate-y-12 pointer-events-none absolute h-0 overflow-hidden'

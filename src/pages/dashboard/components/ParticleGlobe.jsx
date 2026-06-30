@@ -6,8 +6,8 @@ function ParticleGlobeMesh({ currentState, audioVolume = 0, currentEmotion = 'no
   const outerPointsRef = useRef();
   const innerPointsRef = useRef();
   
-  const outerCount = 16000; 
-  const innerCount = 4000; 
+  const outerCount = 12000; 
+  const innerCount = 1000; 
   const baseRadius = 2.3; 
 
   const physics = useRef({
@@ -19,7 +19,6 @@ function ParticleGlobeMesh({ currentState, audioVolume = 0, currentEmotion = 'no
 
   const mouseRotation = useRef({ x: 0, y: 0 });
   const targetRotation = useRef({ x: 0, y: 0 });
-  const isHovered = useRef(false);
 
   const [outerPositions, outerColors, outerData] = useMemo(() => {
     const pos = new Float32Array(outerCount * 3);
@@ -68,7 +67,6 @@ function ParticleGlobeMesh({ currentState, audioVolume = 0, currentEmotion = 'no
     return [pos, col];
   }, []);
 
-  // Cores calibradas: Cores do topo ultra saturadas e base prata brilhante fixa
   const emotionColors = {
     normal: { top: '#A3E635', bottom: '#DCE2E6', coreLight: '#A3E635' },   
     alert: { top: '#FF6A00', bottom: '#DCE2E6', coreLight: '#FF6A00' }   
@@ -87,7 +85,6 @@ function ParticleGlobeMesh({ currentState, audioVolume = 0, currentEmotion = 'no
     const cBottom = new THREE.Color(activeColor.bottom);
     const cCore = new THREE.Color(activeColor.coreLight);
 
-    // SISTEMA DE INTERPOLAÇÃO DE RETORNO (Vira com o mouse e reseta pro centro)
     if (state.pointer.x === 0 && state.pointer.y === 0) {
       targetRotation.current.y = 0;
       targetRotation.current.x = 0;
@@ -96,7 +93,6 @@ function ParticleGlobeMesh({ currentState, audioVolume = 0, currentEmotion = 'no
       targetRotation.current.x = -state.pointer.y * Math.PI * 0.35;
     }
     
-    // Suavização para voltar para a posição original com o topo para cima
     mouseRotation.current.y = THREE.MathUtils.lerp(mouseRotation.current.y, targetRotation.current.y, 0.06);
     mouseRotation.current.x = THREE.MathUtils.lerp(mouseRotation.current.x, targetRotation.current.x, 0.06);
 
@@ -116,7 +112,6 @@ function ParticleGlobeMesh({ currentState, audioVolume = 0, currentEmotion = 'no
     p.pulse = THREE.MathUtils.lerp(p.pulse, tPulse, 0.04);
     p.audioInfluence = THREE.MathUtils.lerp(p.audioInfluence, tAudioInfluence, 0.06);
 
-    // 1. Atualizar Casca Externa
     for (let i = 0; i < outerCount; i++) {
       const d = outerData[i];
       const currentTheta = d.theta + (time * 0.025 * d.speedMultiplier * p.speed);
@@ -135,9 +130,8 @@ function ParticleGlobeMesh({ currentState, audioVolume = 0, currentEmotion = 'no
       outPos[i * 3 + 1] = currentRadius * Math.sin(d.phi) * Math.sin(currentTheta);
       outPos[i * 3 + 2] = currentRadius * Math.cos(d.phi);
 
-      // PARTE EDITADA PARA INTENSIFICAR A COR E MANTER O PRATA embaixo:
       const heightFactor = (outPos[i * 3 + 1] / currentRadius + 1.0) * 0.5; 
-      const colorMix = Math.pow(heightFactor, 1); // CORES
+      const colorMix = Math.pow(heightFactor, 1); 
       
       let finalColor = new THREE.Color().lerpColors(cBottom, cTop, colorMix);
       
@@ -160,7 +154,6 @@ function ParticleGlobeMesh({ currentState, audioVolume = 0, currentEmotion = 'no
       outCol[i * 3 + 2] = finalColor.b;
     }
 
-    // 2. Atualizar Núcleo Interno Sincronizado
     for (let i = 0; i < innerCount; i++) {
       const coreColor = cCore.clone().multiplyScalar(0.25 + Math.sin(time * 2.0 + i) * 0.05);
       if (p.audioInfluence > 0.1) {
@@ -175,7 +168,6 @@ function ParticleGlobeMesh({ currentState, audioVolume = 0, currentEmotion = 'no
     outerPointsRef.current.geometry.attributes.color.needsUpdate = true;
     innerPointsRef.current.geometry.attributes.color.needsUpdate = true;
 
-    // Aplicando as rotações do mouse com amortecimento para voltar ao ponto inicial
     outerPointsRef.current.rotation.y = time * 0.015 + mouseRotation.current.y;
     outerPointsRef.current.rotation.x = mouseRotation.current.x;
     
@@ -220,80 +212,20 @@ function ParticleGlobeMesh({ currentState, audioVolume = 0, currentEmotion = 'no
   );
 }
 
-function SoundSimulator({ isTesting, setVolume }) {
-  const testTime = useRef(0);
-  useFrame(() => {
-    if (isTesting) {
-      testTime.current += 0.06;
-      const speechFlow = Math.sin(testTime.current * 1.6) * Math.cos(testTime.current * 0.5) * (0.6 + Math.sin(testTime.current * 2.8) * 0.4);
-      setVolume(Math.max(0, speechFlow));
-    } else {
-      setVolume(0);
-    }
-  });
-  return null;
-}
+// Removido o SoundSimulator estático já que a interface de simulação sumiu.
+// Caso precise injetar volume de áudio real, basta passar pelas propriedades do ParticleGlobe.
 
-export function ParticleGlobe() {
-  const [isClickTesting, setIsClickTesting] = useState(false);
-  const [simulatedVolume, setSimulatedVolume] = useState(0);
-  const [currentState, setCurrentState] = useState('waiting'); 
-  const [currentEmotion, setCurrentEmotion] = useState('normal'); 
-
-  const activeState = isClickTesting ? 'responding' : currentState;
-
+export function ParticleGlobe({ currentState = 'waiting', currentEmotion = 'normal', audioVolume = 0 }) {
   return (
-    <div className="relative w-full shadow-2xl flex flex-col  bg-black rounded-2xl overflow-hidden border border-slate-950  items-center">
-      
-      <div 
-        className="relative w-full h-115 cursor-grab active:cursor-grabbing select-none"
-        onClick={() => setIsClickTesting(!isClickTesting)}
-      >
-        <div className="absolute top-4 left-4 z-10 text-[10px] text-slate-500 font-mono bg-slate-950/80 backdrop-blur px-2.5 py-1 rounded border border-slate-900 pointer-events-none tracking-widest flex items-center gap-2">
-          SISTEMA: <span className={`font-bold uppercase ${currentEmotion === 'alert' ? 'text-orange-500' : 'text-lime-400'}`}>{activeState}</span>
-          <span>|</span>
-          MODO: <span className={`font-bold uppercase ${currentEmotion === 'alert' ? 'text-orange-500' : 'text-lime-400'}`}>{currentEmotion}</span>
-      </div>
-
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 text-[10px] font-mono tracking-wider px-4 py-1.5 rounded-md bg-slate-950/90 border border-slate-900 text-slate-400 pointer-events-none">
-          {isClickTesting ? "SIMULANDO REPRODUÇÃO DE ÁUDIO" : "CLIQUE NO GLOBO PARA FALAR"}
-        </div>
-
-        <Canvas camera={{ position: [0, 0, 5.5], fov: 55 }}>
-          <ambientLight intensity={0.5} />
-          <SoundSimulator isTesting={isClickTesting} setVolume={setSimulatedVolume} />
-          <ParticleGlobeMesh 
-            currentState={activeState} 
-            audioVolume={simulatedVolume} 
-            currentEmotion={currentEmotion} 
-          />
-        </Canvas>
-      </div>
-
-      <div className="w-full bg-slate-950/60 backdrop-blur p-4 border-t border-slate-900 flex justify-center gap-4 z-20">
-      <button 
-          onClick={() => { setCurrentEmotion('normal'); setCurrentState('waiting'); }}
-          className={`px-4 py-1.5 rounded text-xs font-mono tracking-wider transition-all duration-200 border ${
-            currentEmotion === 'normal' 
-              ? 'bg-lime-500/10 text-lime-400 border-lime-500/40 shadow-[0_0_12px_rgba(163,230,53,0.15)]' 
-              : 'bg-slate-900 text-slate-400 border-transparent hover:bg-slate-800'
-          }`}
-        >
-          PRODUTO PADRÃO (VERDE)
-      </button>
-
-        <button
-          onClick={() => { setCurrentEmotion('alert'); setCurrentState('responding'); }}
-          className={`px-4 py-1.5 rounded text-xs font-mono tracking-wider transition-all duration-200 border ${
-            currentEmotion === 'alert' 
-              ? 'bg-orange-500/10 text-orange-400 border-orange-500/40 shadow-[0_0_12px_rgba(255,81,0,0.15)]' 
-              : 'bg-slate-900 text-slate-400 border-transparent hover:bg-slate-800'
-          }`}
-        >
-          MODO ALERTA
-        </button>
-      </div>
-
+    <div className="w-full h-115 cursor-grab active:cursor-grabbing select-none bg-transparent">
+      <Canvas camera={{ position: [0, 0, 5.5], fov: 55 }} gl={{ alpha: true }}>
+        <ambientLight intensity={0.5} />
+        <ParticleGlobeMesh 
+          currentState={currentState} 
+          audioVolume={audioVolume} 
+          currentEmotion={currentEmotion} 
+        />
+      </Canvas>
     </div>
   );
 }

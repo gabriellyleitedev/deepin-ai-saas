@@ -53,18 +53,18 @@ export default function Layout() {
 
   return (
     // CONTAINER PRINCIPAL: Ocupa 100% da tela
-    <div className="w-full min-h-screen bg-white/80 flex flex-col antialiased font-sans text-white select-none relative">
+    <div className="w-full min-h-screen bg-white/60 flex flex-col antialiased font-sans text-white select-none relative">
 
       {/* Header visível apenas no mobile */}
       <MobileHeader activeTab={activeTab} navigateBack={navigateBack} canGoBack={history.length > 0} />
 
       {/* BARRA DE NAVEGAÇÃO SUPERIOR: Desktop */}
-      <header className="w-full bg-white/80 text-white px-6 py-4 hidden md:block">
+      <header className="w-full bg-white/60 text-white px-6 py-4 hidden md:block">
         <Navbar activeTab={activeTab} setActiveTab={handleTabChange} />
       </header>
 
       {/* ÁREA DE CONTEÚDO DO DASHBOARD */}
-      <main className="flex-1 w-full overflow-y-auto bg-white/80">
+      <main className="flex-1 w-full overflow-y-auto bg-white/60">
         {renderTabContent()}
       </main>
 
