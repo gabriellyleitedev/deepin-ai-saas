@@ -9,7 +9,7 @@ export function MiniChartCard({ apiData }) {
   const chartData = apiData || defaultData;
 
   return (
-    <div className="w-full font-sans select-none text-left px-2">
+    <div className="w-full font-sans select-none text-left px-2 ">
       
       {/* 1. Títulos do Topo e Colunas Alinhadas */}
       <div className="grid grid-cols-2 gap-4 h-52 items-end">

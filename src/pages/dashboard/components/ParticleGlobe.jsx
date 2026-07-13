@@ -217,7 +217,7 @@ function ParticleGlobeMesh({ currentState, audioVolume = 0, currentEmotion = 'no
 
 export function ParticleGlobe({ currentState = 'waiting', currentEmotion = 'normal', audioVolume = 0 }) {
   return (
-    <div className="w-full h-115 cursor-grab active:cursor-grabbing select-none bg-transparent">
+    <div className="w-full h-100 cursor-grab active:cursor-grabbing select-none bg-transparent">
       <Canvas camera={{ position: [0, 0, 5.5], fov: 55 }} gl={{ alpha: true }}>
         <ambientLight intensity={0.5} />
         <ParticleGlobeMesh 

@@ -27,7 +27,7 @@ model Lead {
   status        String   @default("novo") // novo | triagem | alto-interesse | agendado | finalizado
   userId        String
   user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  conversations Conversation[]
+  conversations Conversation[]   
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 }
