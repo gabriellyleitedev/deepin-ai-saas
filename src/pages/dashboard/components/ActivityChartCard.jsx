@@ -16,7 +16,10 @@ export function AbsolutePremiumChart({ externalData }) {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const API = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+        const API = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:3000' : undefined);
+        if (!API) {
+          throw new Error('VITE_API_URL is not defined. Set the backend URL in Vercel environment variables.');
+        }
 
         const response = await fetch(`${API}/dashboard`);
         if (!response.ok) throw new Error('Erro ao buscar dados');

@@ -5,9 +5,13 @@
  * Centraliza toda a lógica de comunicação com o backend
  */
 
-const API = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const envApi = import.meta.env.VITE_API_URL;
+const API = envApi || (import.meta.env.DEV ? 'http://localhost:3000' : undefined);
 
 export const getDashboardOverview = async () => {
+  if (!API) {
+    throw new Error('VITE_API_URL is not defined. Configure it in Vercel environment variables to point to the backend URL.');
+  }
   try {
     const response = await fetch(`${API}/dashboard`, {
       method: 'GET',

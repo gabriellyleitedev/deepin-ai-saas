@@ -8,26 +8,30 @@ export default function OverviewCards() {
   const [error, setError] = useState(null);
 
     // DEFINA A API AQUI (fora do useEffect, mas dentro do componente)
-    const API = import.meta.env.VITE_API_URL || 'http://localhost:3000';
-
+  const API = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:3000' : undefined);
    useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(`${API}/dashboard`);
-        if (!response.ok) throw new Error('Erro ao buscar dados');
-        const data = await response.json();
-        setCards(data.cards || data || []);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, [API]);
+     const fetchData = async () => {
+       if (!API) {
+         setError('VITE_API_URL is not defined. Configure it in Vercel environment variables.');
+         setLoading(false);
+         return;
+       }
 
-    console.log(cards);
+       try {
+         setLoading(true);
+         const response = await fetch(`${API}/dashboard`);
+         if (!response.ok) throw new Error('Erro ao buscar dados');
+         const data = await response.json();
+         setCards(data.cards || data || []);
+       } catch (err) {
+         setError(err.message);
+       } finally {
+         setLoading(false);
+       }
+     };
+
+     fetchData();
+   }, [API]);
 
     return (
 
