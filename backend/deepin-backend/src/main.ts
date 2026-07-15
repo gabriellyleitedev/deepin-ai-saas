@@ -8,6 +8,7 @@ async function bootstrap() {
     origin: [
       "http://localhost:5173",
       "https://deepin-ai-saas.vercel.app",
+      "https://deepin-backend-production.up.railway.app", // ← adicione
     ],
     credentials: true,
   });

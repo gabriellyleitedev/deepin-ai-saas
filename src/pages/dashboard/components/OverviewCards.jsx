@@ -2,22 +2,36 @@ import React, { useState, useEffect } from 'react';
 
 export default function OverviewCards() {
 
-    const [cards, setCards] = useState([]);
 
-    useEffect(() => {
-        fetch("http://localhost:3000/dashboard")
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-                setCards(data.cards);
-            });
-    }, []);
+      const [cards, setCards] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+    // DEFINA A API AQUI (fora do useEffect, mas dentro do componente)
+    const API = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
+   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(`${API}/dashboard`);
+        if (!response.ok) throw new Error('Erro ao buscar dados');
+        const data = await response.json();
+        setCards(data.cards || data || []);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, [API]);
 
     console.log(cards);
 
     return (
 
-        <div className="grid grid-cols-5 gap-4 mt-2 ml-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-2 ml-10">
 
             {/* CARD 1: AGENTES */}
             <div className="relative w-full h-24 font-sans select-none drop-shadow-[0_8px_24px_rgba(0,0,0,0.02)] group">

@@ -8,9 +8,10 @@ import { GlobeService } from './services/globe.service';
 import { RecentLeadsService } from './services/recent-leads.service';
 import { CardsRepository } from './repositories/cards.repository';
 import { ChartRepository } from './repositories/chart.repository'; // Importe o ChartRepository
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaModule } from 'src/prisma/prisma.module';
 
 @Module({
+  imports: [PrismaModule],
   controllers: [DashboardController],
   providers: [
     DashboardService,
@@ -21,7 +22,6 @@ import { PrismaService } from 'src/prisma/prisma.service';
     RecentLeadsService,
     CardsRepository,
     ChartRepository,   // <-- Adicione aqui
-    PrismaService
   ],
 })
 export class DashboardModule {}

@@ -5,16 +5,14 @@
  * Centraliza toda a lógica de comunicação com o backend
  */
 
-const API_URL = 'http://localhost:3000/api/dashboard';
+const API = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 export const getDashboardOverview = async () => {
   try {
-    const response = await fetch(`${API_URL}/overview`, {
+    const response = await fetch(`${API}/dashboard`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        // TODO: adicionar token JWT aqui depois
-        // 'Authorization': `Bearer ${token}`
       }
     });
 
@@ -23,7 +21,8 @@ export const getDashboardOverview = async () => {
     }
 
     const data = await response.json();
-    return data.data; // retorna só a parte "data" do JSON
+    // API retorna o objeto completo do dashboard. Normaliza para facilitar o consumo.
+    return data;
   } catch (error) {
     console.error('Error fetching dashboard overview:', error);
     throw error;

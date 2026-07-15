@@ -16,7 +16,9 @@ export function AbsolutePremiumChart({ externalData }) {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await fetch('http://localhost:3000/dashboard');
+        const API = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
+        const response = await fetch(`${API}/dashboard`);
         if (!response.ok) throw new Error('Erro ao buscar dados');
         const result = await response.json();
         if (result.weeklyChart && Array.isArray(result.weeklyChart)) {
@@ -117,13 +119,13 @@ export function AbsolutePremiumChart({ externalData }) {
           <h3 className="text-md font-medium tracking-tight text-[#121318]">{headerMessage}</h3>
         </div>
         <div className="flex items-center bg-[#EAECED] p-1 rounded-full border border-gray-300/30">
-          <button 
+          <button
             className={`text-[12px] font-bold px-4 py-1.5 rounded-full transition-all ${viewMode === 'weekly' ? 'bg-[#a3e635] text-[#121318] shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
             onClick={() => setViewMode('weekly')}
           >
             • Semanal
           </button>
-          <button 
+          <button
             className={`text-[12px] font-medium px-4 py-1.5 rounded-full transition-all ${viewMode === 'monthly' ? 'bg-[#a3e635] text-[#121318] shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
             onClick={() => setViewMode('monthly')}
           >
@@ -155,7 +157,7 @@ export function AbsolutePremiumChart({ externalData }) {
               return (
                 <div
                   key={index}
-                  className={`flex flex-col items-center h-full w-14 justify-end relative cursor-pointer group transition-all ${isGreen ? 'z-30' : 'z-10'}`}
+                  className={`flex flex-col items-center h-full w-10 md:w-14 justify-end relative cursor-pointer group transition-all ${isGreen ? 'z-30' : 'z-10'}`}
                   onMouseEnter={() => {
                     setHoveredIndex(index);
                     setShowTooltip(true);
@@ -207,7 +209,7 @@ export function AbsolutePremiumChart({ externalData }) {
 
                   {/* BARRA */}
                   <div
-                    className={`w-12 rounded-md absolute bottom-0 transition-all duration-300 ease-out flex justify-center overflow-visible
+                            className={`w-10 md:w-12 rounded-md absolute bottom-0 transition-all duration-300 ease-out flex justify-center overflow-visible
                       ${isGreen
                         ? 'bg-[#a3e635] shadow-[0_8px_32px_rgba(174,230,56,0.35)]'
                         : 'bg-gray-300 hover:bg-[#E2E4E5]'
@@ -235,7 +237,7 @@ export function AbsolutePremiumChart({ externalData }) {
         {chartData.map((item, index) => (
           <span
             key={index}
-            className={`w-14 text-center transition-colors duration-200 ${hoveredIndex === index ? 'text-[#121318] font-medium scale-105' : ''}`}
+            className={`w-10 md:w-14 text-center transition-colors duration-200 ${hoveredIndex === index ? 'text-[#121318] font-medium scale-105' : ''}`}
           >
             {item.day}
           </span>
