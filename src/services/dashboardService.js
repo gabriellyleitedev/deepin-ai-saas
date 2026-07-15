@@ -6,7 +6,7 @@
  */
 
 const envApi = import.meta.env.VITE_API_URL;
-const API = envApi || (import.meta.env.DEV ? 'http://localhost:3000' : undefined);
+const API = envApi || (import.meta.env.DEV ? 'http://localhost:3000' : window.location.origin);
 
 export const getDashboardOverview = async () => {
   if (!API) {

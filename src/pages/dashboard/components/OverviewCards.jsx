@@ -8,15 +8,9 @@ export default function OverviewCards() {
   const [error, setError] = useState(null);
 
     // DEFINA A API AQUI (fora do useEffect, mas dentro do componente)
-  const API = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:3000' : undefined);
+  const API = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:3000' : window.location.origin);
    useEffect(() => {
      const fetchData = async () => {
-       if (!API) {
-         setError('VITE_API_URL is not defined. Configure it in Vercel environment variables.');
-         setLoading(false);
-         return;
-       }
-
        try {
          setLoading(true);
          const response = await fetch(`${API}/dashboard`);
