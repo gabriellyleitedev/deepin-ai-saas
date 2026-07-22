@@ -1,0 +1,186 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Company {
+  id        String   @id @default(cuid())
+  name      String
+  plan      String   @default("starter")
+  active    Boolean  @default(true) // Esse active vai ser útil para bloquear empresas inadimplentes, suspensas ou em teste.
+
+  users     User[]
+  leads     Lead[]
+  agents    Agent[]
+  automations Automation[]
+  conversations Conversation[]
+  smartQueueAlerts SmartQueueAlert[]
+  systemMetrics SystemMetric[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model User {
+  id         String   @id @default(cuid())
+  name       String
+  email      String   @unique
+  password   String
+
+  companyId  String
+  company    Company  @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Lead {
+
+  id String @id @default(cuid())
+
+  name String
+  email String?
+  phone String?
+
+  status String @default("novo")
+
+  companyId String
+  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  conversations Conversation[]   
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([createdAt, status]) // ISSO AQUI FAZ A QUERY VOAR ABAIXO DE 2ms
+}
+
+model Conversation {
+
+  id String @id @default(cuid())
+
+  companyId String
+  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  leadId String
+  lead Lead @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  messages Int @default(0)
+
+  audioMessages Int @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Agent {
+
+  id String @id @default(cuid())
+
+  name String
+
+  prompt String
+
+  active Boolean @default(true)
+
+  companyId String
+  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+}
+
+model Automation {
+
+  id String @id @default(cuid())
+
+  name String
+
+  status String @default("active")
+
+  companyId String
+  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+}
+
+// ============================================
+// FILA INTELIGENTE - Smart Queue Models
+// ============================================
+
+model SmartQueueAlert {
+  // Modelo para armazenar cada alerta/análise gerada
+  // A análise acontece 1x por dia via cron job
+  
+  id String @id @default(cuid())
+
+  // Relacionamento com empresa (cada empresa tem seus alertas)
+  companyId String
+  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  // Tipo de alerta (e.g., "leads_recovery", "conversion_rate", "api_status")
+  type String
+
+  // Título do alerta (oque aparece no card)
+  title String
+
+  // Descrição detalhada (explica o porquê)
+  description String
+
+  // Número principal do alerta (3.922 leads, 84.2%, etc)
+  primaryMetric String
+
+  // Metadados adicionais em JSON
+  // Pode guardar qualquer dado relevante pro alerta
+  metadata Json @default("{}")
+
+  // Data da análise (quando o alerta foi gerado)
+  analyzedAt DateTime @default(now())
+
+  // Timestamp de criação
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([companyId, analyzedAt])
+}
+
+model SystemMetric {
+  // Modelo para armazenar métricas do sistema
+  // Dados brutos que usamos para calcular os alertas
+  
+  id String @id @default(cuid())
+
+  companyId String
+  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  // Métricas principais
+  totalLeads Int @default(0)
+  recoveredLeads Int @default(0)
+  conversionRate Float @default(0)
+  
+  // Status do sistema
+  apiStatus String @default("healthy") // healthy, warning, critical
+  automationActiveCount Int @default(0)
+  
+  // Dados de uso
+  totalConversations Int @default(0)
+  activeAgents Int @default(0)
+
+  // Data da métrica (dia da coleta)
+  metricDate DateTime @default(now())
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([companyId, metricDate])
+}
+
